@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getJoinrideStatus } from '../../lib/joinride';
 
-export const prerender = true;
+export const prerender = false;
 
 export const GET: APIRoute = async () => {
   const status = await getJoinrideStatus();
@@ -11,7 +11,7 @@ export const GET: APIRoute = async () => {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'public, max-age=300, stale-while-revalidate=600',
+      'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
     },
   });
 };

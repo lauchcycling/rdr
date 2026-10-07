@@ -1,6 +1,7 @@
 # Build & Cache Directories
 dist/
 .astro/
+.vercel/
 node_modules/
 
 # Environment Variables
