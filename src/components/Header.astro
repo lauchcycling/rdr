@@ -28,12 +28,12 @@ const isNews = currentPath.startsWith('/news');
         </picture>
       </a>
 
-      <!-- Desktop Navigation Links with Scrollspy Data Attributes -->
-      <nav id="desktop-nav" class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium" aria-label="Hauptnavigation">
+      <!-- Desktop Navigation Links (Pure text color highlight, no button/border style) -->
+      <nav id="desktop-nav" class="hidden md:flex items-center space-x-1 lg:space-x-3 text-sm font-medium" aria-label="Hauptnavigation">
         <a 
           href="/#hero" 
           data-nav-section="hero"
-          class={`desktop-nav-link px-3 py-2 transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isHome ? 'text-primary font-bold bg-primary/10 !border-primary/20' : 'text-gray-100 hover:text-primary'}`}
+          class={`desktop-nav-link px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
           aria-current={isHome ? 'page' : undefined}
         >
           Home
@@ -41,7 +41,7 @@ const isNews = currentPath.startsWith('/news');
         <a 
           href="/#groupride" 
           data-nav-section="groupride"
-          class="desktop-nav-link px-3 py-2 text-gray-100 hover:text-primary transition-all duration-200 rounded-lg border border-transparent flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          class="desktop-nav-link px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           <span>Groupride</span>
           <span class="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true"></span>
@@ -49,14 +49,14 @@ const isNews = currentPath.startsWith('/news');
         <a 
           href="/#babos" 
           data-nav-section="babos"
-          class="desktop-nav-link px-3 py-2 text-gray-100 hover:text-primary transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          class="desktop-nav-link px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           Club
         </a>
         <a 
           href={isHome ? "/#news" : "/news"} 
           data-nav-section="news"
-          class={`desktop-nav-link px-3 py-2 transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isNews ? 'text-primary font-bold bg-primary/10 !border-primary/20' : 'text-gray-100 hover:text-primary'}`}
+          class={`desktop-nav-link px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
           aria-current={isNews ? 'page' : undefined}
         >
           News
@@ -64,7 +64,7 @@ const isNews = currentPath.startsWith('/news');
         <a 
           href="/#kontakt" 
           data-nav-section="kontakt"
-          class="desktop-nav-link px-3 py-2 text-gray-100 hover:text-primary transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          class="desktop-nav-link px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           Kontakt
         </a>
@@ -212,7 +212,7 @@ const isNews = currentPath.startsWith('/news');
       });
     }
 
-    // 2. Desktop Scrollspy (Active viewport highlight - DESKTOP ONLY >= 768px)
+    // 2. Desktop Scrollspy (Active viewport text color highlight - DESKTOP ONLY >= 768px)
     function initDesktopScrollspy() {
       if (window.innerWidth < 768) return;
 
@@ -224,18 +224,24 @@ const isNews = currentPath.startsWith('/news');
         .map(id => document.getElementById(id))
         .filter(el => el !== null);
 
-      if (!targetSections.length) return;
+      // Only run scrollspy if homepage sections exist
+      if (targetSections.length < 2) return;
+
+      let currentActiveId = null;
 
       function highlightSection(activeId) {
+        if (currentActiveId === activeId) return;
+        currentActiveId = activeId;
+
         navLinks.forEach(link => {
           const sec = link.getAttribute('data-nav-section');
           if (sec === activeId) {
-            link.classList.add('text-primary', 'font-bold', 'bg-primary/10', '!border-primary/20');
-            link.classList.remove('text-gray-100');
+            link.classList.add('text-primary', 'font-bold');
+            link.classList.remove('text-gray-200');
             link.setAttribute('aria-current', 'true');
           } else {
-            link.classList.remove('text-primary', 'font-bold', 'bg-primary/10', '!border-primary/20');
-            link.classList.add('text-gray-100');
+            link.classList.remove('text-primary', 'font-bold');
+            link.classList.add('text-gray-200');
             link.removeAttribute('aria-current');
           }
         });
@@ -245,35 +251,60 @@ const isNews = currentPath.startsWith('/news');
         if (window.innerWidth < 768) return;
 
         const scrollY = window.scrollY;
-        const scrollPosition = scrollY + 180; // Offset for sticky navbar
 
-        // Near top of page -> Hero
-        if (scrollY < 180) {
+        // If at top of page -> Hero
+        if (scrollY < 120) {
           highlightSection('hero');
           return;
         }
 
-        // Near bottom of page -> Kontakt
-        if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 80) {
+        // If near bottom of page -> Kontakt
+        if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 70) {
           highlightSection('kontakt');
           return;
         }
 
-        let currentActive = 'hero';
-        for (const el of targetSections) {
-          if (scrollPosition >= el.offsetTop) {
-            currentActive = el.id;
+        // Detect section in viewport using getBoundingClientRect
+        let activeId = 'hero';
+        for (let i = targetSections.length - 1; i >= 0; i--) {
+          const el = targetSections[i];
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 220 && rect.bottom > 100) {
+            activeId = el.id;
+            break;
           }
         }
-        highlightSection(currentActive);
+        highlightSection(activeId);
       }
 
-      window.addEventListener('scroll', handleScroll, { passive: true });
+      // Quick-highlight on click
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const sec = link.getAttribute('data-nav-section');
+          if (sec) highlightSection(sec);
+        });
+      });
+
+      let ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      document.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) handleScroll();
       });
 
+      // Initial check on load
       handleScroll();
+      setTimeout(handleScroll, 150);
     }
 
     initDesktopScrollspy();
