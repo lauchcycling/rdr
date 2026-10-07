@@ -8,9 +8,9 @@ const isNews = currentPath.startsWith('/news');
 
 <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-surface-dark/95 border-b border-surface-border transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+    <div class="flex items-center justify-between h-20 sm:h-22">
       
-      <!-- Brand Logo -->
+      <!-- Brand Logo (Enlarged for clear legibility of 'RC Dynamo Ruhr') -->
       <a 
         href="/" 
         class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg py-1" 
@@ -21,45 +21,50 @@ const isNews = currentPath.startsWith('/news');
           <img 
             src="/images/logo.png" 
             alt="RC Dynamo Ruhr e.V. – Radsportverein für Rennrad & Gravel im Ruhrgebiet" 
-            class="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            width="200" 
-            height="86"
+            class="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            width="357" 
+            height="160"
           />
         </picture>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center space-x-1 lg:space-x-3 text-sm font-medium" aria-label="Hauptnavigation">
+      <!-- Desktop Navigation Links with Scrollspy Data Attributes -->
+      <nav id="desktop-nav" class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium" aria-label="Hauptnavigation">
         <a 
-          href="/" 
-          class={`px-3 py-2 transition-colors duration-200 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isHome ? 'text-primary font-bold' : 'text-gray-100 hover:text-primary'}`}
+          href="/#hero" 
+          data-nav-section="hero"
+          class={`desktop-nav-link px-3 py-2 transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isHome ? 'text-primary font-bold bg-primary/10 !border-primary/20' : 'text-gray-100 hover:text-primary'}`}
           aria-current={isHome ? 'page' : undefined}
         >
           Home
         </a>
         <a 
           href="/#groupride" 
-          class="px-3 py-2 text-gray-100 hover:text-primary transition-colors duration-200 rounded-md flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          data-nav-section="groupride"
+          class="desktop-nav-link px-3 py-2 text-gray-100 hover:text-primary transition-all duration-200 rounded-lg border border-transparent flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           <span>Groupride</span>
           <span class="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true"></span>
         </a>
         <a 
           href="/#babos" 
-          class="px-3 py-2 text-gray-100 hover:text-primary transition-colors duration-200 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          data-nav-section="babos"
+          class="desktop-nav-link px-3 py-2 text-gray-100 hover:text-primary transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          Der Club
+          Club
         </a>
         <a 
-          href="/news" 
-          class={`px-3 py-2 transition-colors duration-200 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isNews ? 'text-primary font-bold' : 'text-gray-100 hover:text-primary'}`}
+          href={isHome ? "/#news" : "/news"} 
+          data-nav-section="news"
+          class={`desktop-nav-link px-3 py-2 transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isNews ? 'text-primary font-bold bg-primary/10 !border-primary/20' : 'text-gray-100 hover:text-primary'}`}
           aria-current={isNews ? 'page' : undefined}
         >
           News
         </a>
         <a 
           href="/#kontakt" 
-          class="px-3 py-2 text-gray-100 hover:text-primary transition-colors duration-200 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          data-nav-section="kontakt"
+          class="desktop-nav-link px-3 py-2 text-gray-100 hover:text-primary transition-all duration-200 rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           Kontakt
         </a>
@@ -137,7 +142,7 @@ const isNews = currentPath.startsWith('/news');
   <nav id="mobile-menu" class="hidden sm:hidden bg-surface-card border-b border-surface-border px-4 pt-3 pb-6 space-y-2" aria-label="Mobile Navigation">
     <a href="/" class={`mobile-nav-link block px-3 py-3 rounded-md text-base font-medium ${isHome ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} aria-current={isHome ? 'page' : undefined}>Home</a>
     <a href="/#groupride" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark">Groupride</a>
-    <a href="/#babos" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark">Der Club</a>
+    <a href="/#babos" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark">Club</a>
     <a href="/news" class={`mobile-nav-link block px-3 py-3 rounded-md text-base font-medium ${isNews ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} aria-current={isNews ? 'page' : undefined}>News</a>
     <a href="/#kontakt" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark">Kontakt</a>
     
@@ -147,7 +152,8 @@ const isNews = currentPath.startsWith('/news');
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.93 15.773h4.173"/></svg>
         </a>
         <a href={club.instagramUrl} target="_blank" rel="noopener noreferrer" class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-200 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Instagram (öffnet in neuem Tab)">
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
         </a>
       </div>
       <a 
@@ -164,46 +170,112 @@ const isNews = currentPath.startsWith('/news');
   </nav>
 </header>
 
-<script>
-  // Robust, fully accessible mobile navigation logic with Escape key & focus management
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
+<script is:inline>
+  (function initNavigation() {
+    // 1. Mobile Menu Toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
 
-  function toggleMenu(open?: boolean) {
-    if (!menuBtn || !mobileMenu || !hamburgerIcon || !closeIcon) return;
-    const isCurrentlyExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-    const nextState = typeof open === 'boolean' ? open : !isCurrentlyExpanded;
+    function toggleMenu(open) {
+      if (!menuBtn || !mobileMenu || !hamburgerIcon || !closeIcon) return;
+      const isCurrentlyExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      const nextState = typeof open === 'boolean' ? open : !isCurrentlyExpanded;
 
-    menuBtn.setAttribute('aria-expanded', String(nextState));
-    menuBtn.setAttribute('aria-label', nextState ? 'Menü schließen' : 'Menü öffnen');
+      menuBtn.setAttribute('aria-expanded', String(nextState));
+      menuBtn.setAttribute('aria-label', nextState ? 'Menü schließen' : 'Menü öffnen');
 
-    if (nextState) {
-      mobileMenu.classList.remove('hidden');
-      hamburgerIcon.classList.add('hidden');
-      closeIcon.classList.remove('hidden');
-    } else {
-      mobileMenu.classList.add('hidden');
-      hamburgerIcon.classList.remove('hidden');
-      closeIcon.classList.add('hidden');
-    }
-  }
-
-  if (menuBtn && mobileMenu && hamburgerIcon && closeIcon) {
-    menuBtn.addEventListener('click', () => toggleMenu());
-
-    // Close on click nav link
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => toggleMenu(false));
-    });
-
-    // Close on Escape key press (WCAG 2.1.2)
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
-        toggleMenu(false);
-        menuBtn.focus();
+      if (nextState) {
+        mobileMenu.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
       }
-    });
-  }
+    }
+
+    if (menuBtn && mobileMenu && hamburgerIcon && closeIcon) {
+      menuBtn.addEventListener('click', () => toggleMenu());
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+          toggleMenu(false);
+          menuBtn.focus();
+        }
+      });
+    }
+
+    // 2. Desktop Scrollspy (Active viewport highlight - DESKTOP ONLY >= 768px)
+    function initDesktopScrollspy() {
+      if (window.innerWidth < 768) return;
+
+      const navLinks = Array.from(document.querySelectorAll('.desktop-nav-link[data-nav-section]'));
+      if (!navLinks.length) return;
+
+      const sectionIds = ['hero', 'groupride', 'babos', 'news', 'kontakt'];
+      const targetSections = sectionIds
+        .map(id => document.getElementById(id))
+        .filter(el => el !== null);
+
+      if (!targetSections.length) return;
+
+      function highlightSection(activeId) {
+        navLinks.forEach(link => {
+          const sec = link.getAttribute('data-nav-section');
+          if (sec === activeId) {
+            link.classList.add('text-primary', 'font-bold', 'bg-primary/10', '!border-primary/20');
+            link.classList.remove('text-gray-100');
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.classList.remove('text-primary', 'font-bold', 'bg-primary/10', '!border-primary/20');
+            link.classList.add('text-gray-100');
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      function handleScroll() {
+        if (window.innerWidth < 768) return;
+
+        const scrollY = window.scrollY;
+        const scrollPosition = scrollY + 180; // Offset for sticky navbar
+
+        // Near top of page -> Hero
+        if (scrollY < 180) {
+          highlightSection('hero');
+          return;
+        }
+
+        // Near bottom of page -> Kontakt
+        if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 80) {
+          highlightSection('kontakt');
+          return;
+        }
+
+        let currentActive = 'hero';
+        for (const el of targetSections) {
+          if (scrollPosition >= el.offsetTop) {
+            currentActive = el.id;
+          }
+        }
+        highlightSection(currentActive);
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) handleScroll();
+      });
+
+      handleScroll();
+    }
+
+    initDesktopScrollspy();
+  })();
 </script>

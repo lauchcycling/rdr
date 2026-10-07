@@ -15,8 +15,8 @@ const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
 ---
 
 <Layout 
-  title="RC Dynamo Ruhr e.V. | Radsportverein für Rennrad & Gravel im Ruhrgebiet"
-  description="Offizieller Radsportverein im Revier: Regelmäßige Rennrad- und Gravel-Grouprides in Essen, Gelsenkirchen, Recklinghausen und Umgebung. Kette rechts, lockere Typen, #8000watt."
+  title="RC Dynamo Ruhr e.V. – Radsport & Grouprides im Ruhrgebiet"
+  description="Radsportverein im Ruhrgebiet: Gemeinsame Rennrad- & Gravel-Grouprides in Essen, Gelsenkirchen & Umgebung. Kette rechts, lockere Typen, keine Vereinsmeierei!"
 >
   <Header />
   <main id="main-content" class="flex-grow">
@@ -34,7 +34,7 @@ const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
 
   <!-- Latest News Section -->
   {latestNews.length > 0 && (
-    <section class="py-20 lg:py-24 bg-surface-card/40 border-b border-surface-border">
+    <section id="news" class="py-20 lg:py-24 bg-surface-card/40 border-b border-surface-border">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
@@ -43,7 +43,7 @@ const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
               Aktuelles aus dem Club
             </div>
             <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight font-display">
-              Neues von der Trasse
+              Dynamo News
             </h2>
           </div>
           <a 
