@@ -13,7 +13,7 @@ const sortedNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
   description="Aktuelle Berichte, Ausfahrten und Vereinsgeschichten vom RC Dynamo Ruhr e.V. – Rennrad und Gravel im Ruhrgebiet zwischen Essen, Gelsenkirchen und Recklinghausen."
 >
   <Header />
-  <main class="flex-grow">
+  <main id="main-content" class="flex-grow">
     <div class="py-16 sm:py-24 bg-surface-dark">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -61,12 +61,13 @@ const sortedNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
             <div class="pt-4 border-t border-surface-border/60 flex items-center justify-between">
               <a 
                 href={`/news/${article.slug}`} 
-                class="inline-flex items-center gap-2 text-primary hover:text-primary-hover font-bold text-sm uppercase tracking-wider"
+                class="inline-flex items-center gap-2 text-primary hover:text-primary-hover font-bold text-sm uppercase tracking-wider focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                aria-label={`Ganzen Bericht lesen: ${article.data.title}`}
               >
                 <span>Ganzen Bericht lesen</span>
-                <span>→</span>
+                <span aria-hidden="true">→</span>
               </a>
-              <span class="text-xs text-gray-500 font-mono">
+              <span class="text-xs text-gray-400 font-mono">
                 RC Dynamo Ruhr
               </span>
             </div>

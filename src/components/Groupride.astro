@@ -47,8 +47,8 @@ try {
           <!-- Top Status Bar -->
           <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-surface-border">
             <div class="flex items-center gap-3">
-              <span class="flex h-3.5 w-3.5 relative">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="flex h-3.5 w-3.5 relative" aria-hidden="true">
+                <span class="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500"></span>
               </span>
               <span class="text-sm font-bold uppercase tracking-widest text-green-400">Ausfahrt bestätigt</span>
@@ -56,7 +56,7 @@ try {
             
             <!-- Date & Time badge -->
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-dark border border-surface-border text-white text-sm sm:text-base font-semibold">
-              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
               <span>{formattedDate}</span>
@@ -72,43 +72,43 @@ try {
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-10">
             <!-- Distanz -->
             <div class="bg-surface-dark/80 border border-surface-border/80 rounded-2xl p-4 sm:p-5 text-center transition-transform hover:-translate-y-1">
-              <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">Distanz</span>
+              <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider block mb-1">Distanz</span>
               <span class="text-2xl sm:text-3xl font-black text-white font-display">{events.distanceKm}</span>
               <span class="text-primary font-bold text-sm ml-1">km</span>
             </div>
 
             <!-- Höhenmeter -->
             <div class="bg-surface-dark/80 border border-surface-border/80 rounded-2xl p-4 sm:p-5 text-center transition-transform hover:-translate-y-1">
-              <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">Höhenmeter</span>
+              <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider block mb-1">Höhenmeter</span>
               <span class="text-2xl sm:text-3xl font-black text-white font-display">+{events.elevationM}</span>
               <span class="text-primary font-bold text-sm ml-1">hm</span>
             </div>
 
             <!-- Tempo -->
             <div class="bg-surface-dark/80 border border-surface-border/80 rounded-2xl p-4 sm:p-5 text-center transition-transform hover:-translate-y-1">
-              <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">Ziel-Tempo</span>
+              <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider block mb-1">Ziel-Tempo</span>
               <span class="text-xl sm:text-2xl font-black text-white font-display">{events.pace.split(' ')[0]}</span>
-              <span class="text-xs text-gray-400 block mt-1">zusammen rollen</span>
+              <span class="text-xs text-gray-300 block mt-1">zusammen rollen</span>
             </div>
 
             <!-- Treffpunkt -->
             <div class="bg-surface-dark/80 border border-surface-border/80 rounded-2xl p-4 sm:p-5 text-center transition-transform hover:-translate-y-1">
-              <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">Treffpunkt</span>
+              <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider block mb-1">Treffpunkt</span>
               <span class="text-sm sm:text-base font-bold text-white block truncate" title={events.meetingPoint}>{events.meetingPoint}</span>
-              <span class="text-xs text-primary font-medium block mt-1">Pünktlich am Rad</span>
+              <span class="text-xs text-primary font-semibold block mt-1">Pünktlich am Rad</span>
             </div>
           </div>
 
           <!-- Additional Rules & Kaltgetränke Info -->
           <div class="bg-primary/10 border border-primary/20 rounded-2xl p-5 mb-8 flex items-start gap-4">
-            <div class="p-2 bg-primary/20 text-primary rounded-xl shrink-0 mt-0.5">
+            <div class="p-2 bg-primary/20 text-primary rounded-xl shrink-0 mt-0.5" aria-hidden="true">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
             <div>
               <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-1">Wichtig für alle Mitfahrenden:</h4>
-              <p class="text-sm text-gray-300 leading-relaxed">
+              <p class="text-sm text-gray-200 leading-relaxed">
                 {events.info}
               </p>
             </div>
@@ -121,20 +121,22 @@ try {
                 href={events.stravaEventUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FC6100] hover:bg-[#e05600] text-white font-bold text-sm tracking-wide shadow-md transition-all"
+                class="min-h-[48px] inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FC6100] hover:bg-[#e05600] text-white font-bold text-sm tracking-wide shadow-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <span>Auf Strava zusagen</span>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.93 15.773h4.173"/></svg>
+                <span class="sr-only">(öffnet in neuem Tab)</span>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.93 15.773h4.173"/></svg>
               </a>
             ) : (
               <a 
                 href={club.stravaClubUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FC6100] hover:bg-[#e05600] text-white font-bold text-sm tracking-wide shadow-md transition-all"
+                class="min-h-[48px] inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FC6100] hover:bg-[#e05600] text-white font-bold text-sm tracking-wide shadow-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <span>Im Strava-Club mitfahren</span>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.93 15.773h4.173"/></svg>
+                <span class="sr-only">(öffnet in neuem Tab)</span>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.93 15.773h4.173"/></svg>
               </a>
             )}
 
@@ -142,9 +144,10 @@ try {
               href={club.instagramUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-surface-dark hover:bg-dark-border border border-surface-border text-gray-200 hover:text-white font-semibold text-sm transition-all"
+              class="min-h-[48px] inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-surface-dark hover:bg-dark-border border border-surface-border text-gray-200 hover:text-white font-semibold text-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <span>Updates via Instagram Story</span>
+              <span class="sr-only">(öffnet in neuem Tab)</span>
             </a>
           </div>
 

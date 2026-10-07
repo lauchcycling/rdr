@@ -72,9 +72,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://dynamoru
       ]
     })} />
 
+    <!-- Accessibility Styles: High-Contrast Focus Visible & Reduced Motion Support -->
+    <style is:global>
+      :focus-visible {
+        outline: 2px solid #E94F1B !important;
+        outline-offset: 3px !important;
+      }
+      
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
     <!-- 100% DSGVO-konform: 0 Tracking, 0 Cookies, 0 externe CDNs -->
   </head>
   <body class="flex min-h-screen flex-col font-sans selection:bg-primary selection:text-white">
+    <!-- A11y Skip to Main Content Link (WCAG 2.4.1) -->
+    <a 
+      href="#main-content" 
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3.5 focus:bg-primary focus:text-white focus:font-bold focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white transition-all text-sm uppercase tracking-wider"
+    >
+      Direkt zum Hauptinhalt springen
+    </a>
     <slot />
   </body>
 </html>

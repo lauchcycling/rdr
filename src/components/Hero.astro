@@ -51,10 +51,10 @@ import club from '../data/club.json';
       <!-- Primary Action: Groupride -->
       <a 
         href="#groupride" 
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold text-base tracking-wide shadow-glow transition-all duration-300 hover:shadow-glow-lg hover:-translate-y-0.5"
+        class="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold text-base tracking-wide shadow-glow transition-all duration-300 hover:shadow-glow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-surface-dark"
       >
         <span>Nächster Groupride</span>
-        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
         </svg>
       </a>
@@ -65,12 +65,13 @@ import club from '../data/club.json';
         target="_blank"
         rel="noopener noreferrer"
         download 
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-surface-card/90 hover:bg-surface-card border border-surface-border hover:border-gray-500 text-white font-semibold text-base transition-all duration-200 backdrop-blur-sm"
+        class="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-surface-card/90 hover:bg-surface-card border border-surface-border hover:border-gray-500 text-white font-semibold text-base transition-all duration-200 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-dark"
       >
-        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
         </svg>
         <span>Mitgliedsantrag laden</span>
+        <span class="sr-only">(PDF Download, öffnet in neuem Tab)</span>
       </a>
     </div>
 

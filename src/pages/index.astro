@@ -80,10 +80,11 @@ const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
               <div class="mt-6 pt-4 border-t border-surface-border/40">
                 <a 
                   href={`/news/${article.slug}`} 
-                  class="text-xs font-bold text-primary hover:underline uppercase tracking-wider inline-flex items-center gap-1"
+                  class="text-xs font-bold text-primary hover:underline uppercase tracking-wider inline-flex items-center gap-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                  aria-label={`Weiterlesen: ${article.data.title}`}
                 >
                   <span>Weiterlesen</span>
-                  <span>→</span>
+                  <span aria-hidden="true">→</span>
                 </a>
               </div>
             </article>

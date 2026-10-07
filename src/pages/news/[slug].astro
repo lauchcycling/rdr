@@ -29,7 +29,7 @@ const formattedDate = new Intl.DateTimeFormat('de-DE', {
   ogImage={entry.data.image || '/images/og-image.jpg'}
 >
   <Header />
-  <main class="flex-grow">
+  <main id="main-content" class="flex-grow">
     <article class="py-16 sm:py-24 bg-surface-dark min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -82,15 +82,17 @@ const formattedDate = new Intl.DateTimeFormat('de-DE', {
       <footer class="mt-16 pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4">
         <a 
           href="/news" 
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface-card border border-surface-border hover:border-primary text-white text-sm font-semibold transition-all"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface-card border border-surface-border hover:border-primary text-white text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <span>← Zurück zu allen News</span>
+          <span aria-hidden="true">←</span>
+          <span>Zurück zu allen News</span>
         </a>
         <a 
           href="/#groupride" 
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-all shadow-glow"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-all shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           <span>Zum nächsten Groupride</span>
+          <span aria-hidden="true">→</span>
         </a>
       </footer>
 
@@ -161,5 +163,31 @@ const formattedDate = new Intl.DateTimeFormat('de-DE', {
     font-style: italic;
     color: #EDEDED;
     font-size: 1.15rem;
+  }
+
+  .article-content img {
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: auto;
+    border: 1px solid #2A2A2A;
+  }
+
+  .article-content a {
+    color: #E94F1B;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+  }
+
+  .article-content a:hover {
+    color: #FF6B35;
+  }
+
+  .article-content a:focus-visible {
+    outline: 2px solid #E94F1B;
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 </style>
