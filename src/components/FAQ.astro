@@ -1,0 +1,161 @@
+---
+import club from '../data/club.json';
+
+interface FAQItem {
+  question: string;
+  paragraphs: string[];
+  bullets?: string[];
+  closingParagraph?: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: "Kann ich einfach so unverbindlich mitfahren oder muss ich direkt Mitglied werden?",
+    paragraphs: [
+      "Absolut, du bist bei uns jederzeit herzlich willkommen! Du musst weder Vereinsmitglied sein noch vorab irgendeinen Antrag ausfüllen oder Geld überweisen, um mit uns eine Runde zu drehen. Wir wissen aus eigener Erfahrung, wie wichtig es ist, erst einmal in Ruhe reinzuschnuppern und zu spüren, ob die Chemie, das Tempo und der allgemeine Vibe zu dir passen.",
+      "Komm einfach zu einem unserer auf Joinride oder Instagram angekündigten Termine zum Treffpunkt. Fahr ein, zwei oder drei Runden ganz zwanglos mit, quatsch mit den Leuten und trink nach der Tour ein Kaltgetränk oder einen Kaffee an der Bude mit uns.",
+      "Erst wenn du merkst: <em>„Geile Truppe, hier fühle ich mich wohl und hier will ich bleiben!“</em>, kannst du ganz entspannt den Mitgliedsantrag ausfüllen. Vorher gibt es absolut keine Verpflichtung und keinerlei Druck."
+    ]
+  },
+  {
+    question: "Ich bin noch nie in der Gruppe gefahren (Windschatten, Handzeichen). Lernt man das bei euch?",
+    paragraphs: [
+      "Keine Sorge: Niemand wird als Peloton-Profi geboren! Fast alle von uns haben irgendwann als Solofahrer*in angefangen und hatten vor dem ersten echten Groupride großen Respekt vor dem Fahren im dichten Feld.",
+      "Sag uns vor dem Start am Treffpunkt einfach kurz Bescheid: <em>„Hi, ich fahre heute zum ersten Mal in einer Gruppe mit.“</em> Wir nehmen uns vor dem Losrollen gerne zwei Minuten Zeit und erklären dir ganz entspannt die wichtigsten Handzeichen (z. B. für Schlaglöcher, Bahnschienen, Hindernisse oder plötzliches Bremsen) und die Grundregeln für sicheres Fahren im Windschatten.",
+      "Auf der Strecke nehmen wir dich gerne in die Mitte oder ins geschützte Mittelfeld. Dort lernst du die Dynamik am besten kennen und sparst im Windschatten bis zu 30 % deiner Tretenergie. Bei uns wird nicht hektisch rumgeschrien oder belehrt – wir fahren vorausschauend, geben klare Signale und achten aufeinander. Nach 20 Kilometern fühlt sich das für dich völlig vertraut an!"
+    ]
+  },
+  {
+    question: "Wie schnell und wie weit fahrt ihr im Schnitt? Was passiert, wenn ich am Berg nicht mithalten kann?",
+    paragraphs: [
+      "Unsere oberste Grundregel lautet: <strong>Zusammen los, zusammen ankommen.</strong> Das ist bei uns kein lockerer Werbeslogan, sondern unser festes Club-Credo. Wir sind kein elitärer Rennstall, der Fahrer*innen am Berg oder an der nächsten Kuppe verhungern lässt. Auf all unseren regulären Club-Ausfahrten gilt das strikte <strong>No-Drop-Prinzip</strong>.",
+      "Das bedeutet konkret: Nach Anstiegen, Halden, Ampelphasen oder engen Abbiegungen wird an der nächsten übersichtlichen Stelle grundsätzlich gewartet und locker ausgerollt, bis die Gruppe wieder vollzählig beisammen ist."
+    ],
+    bullets: [
+      "<strong>Rennrad (Asphalt):</strong> Meist zwischen 26 und 29 km/h Schnitt auf flacher Strecke im soliden Grundlagenbereich.",
+      "<strong>Gravel & Cross (Schotter & Trassen):</strong> Meist zwischen 22 und 25 km/h Schnitt auf wechselndem Untergrund."
+    ],
+    closingParagraph: "Die genauen Streckendaten (Länge, Höhenmeter und Zieltempo) siehst du immer transparent vorab in der Ausschreibung auf Joinride. Und falls du mal einen schlechten Tag mit schweren Beinen erwischst: Wir passen das Tempo sofort an und lassen niemanden im Regen stehen."
+  },
+  {
+    question: "Welches Fahrrad und welches Equipment brauche ich wirklich für eure Ausfahrten?",
+    paragraphs: [
+      "Ob modernes Carbon-Geschoss, treuer Alu-Alltagsrenner, robuster Stahlklassiker oder vielseitiges Gravelbike: Welches Material du fährst, ist völlig zweitrangig – Hauptsache, zwei Räder und ein technisch sicherer Zustand (verlässliche Bremsen, saubere Kette, fahrbereite Reifen).",
+      "In der Joinride-Ausschreibung steht immer genau, worauf die jeweilige Runde ausgelegt ist: <strong>Rennrad-Rides</strong> rollen über asphaltierte Straßen und zügige Landwege, während <strong>Gravel- & Cross-Rides</strong> über alte Bahntrassen, Waldautobahnen und Schotterwege führen."
+    ],
+    bullets: [
+      "<strong>Helmpflicht (ohne Ausnahme):</strong> Ohne passenden Fahrradhelm rollt bei uns kein Rad vom Treffpunkt los – Sicherheit steht an allererster Stelle.",
+      "<strong>Pannenset:</strong> Mindestens ein passender Ersatzschlauch (oder Tubeless-Plugs) sowie eine Minipumpe oder CO2-Kartusche gehören in deine Trikot- oder Satteltasche.",
+      "<strong>Verpflegung:</strong> Gefüllte Trinkflaschen und ein Riegel, Gel oder eine Banane gegen den gefürchteten Hungerast unterwegs."
+    ],
+    closingParagraph: "<em>Keine Angst vor Pannen:</em> Solltest du unterwegs einen Platten haben, hält der gesamte Zug sofort an. Du musst nicht nervös alleine am Straßenrand schrauben – wir packen gemeinsam an und in wenigen Minuten rollt die Gruppe wieder weiter!"
+  },
+  {
+    question: "Dürfen auch Frauen / FLINTA* mitfahren und wie ist die Stimmung in der Gruppe?",
+    paragraphs: [
+      "Ein ganz klares und herzliches: <strong>Ja, unbedingt!</strong> Radsport ist für alle da, und wir freuen uns riesig über jede Fahrerin und jeden Fahrer, die oder der Bock auf gemeinsame Kilometer im Revier hat.",
+      "Im traditionellen Radsport trifft man leider immer noch auf elitäre Männerrunden mit verbissenem Testosteron-Gehabe, ungefragten Belehrungen über Wattwerte und Posen an der Ampel. Genau das wollen und leben wir beim RC Dynamo Ruhr nicht. Bei uns begegnen sich alle auf Augenhöhe – vollkommen unabhängig von Geschlecht, Material oder Trainingsstand.",
+      "Uns eint die Begeisterung für den Sport, ehrlicher Ruhrpott-Humor und gegenseitiger Respekt. Wenn du Lust auf eine offene, lockere Atmosphäre ohne Macho-Gehabe hast: Schnapp dir dein Rad und roll einfach mit!"
+    ]
+  },
+  {
+    question: "Was kostet eine Mitgliedschaft, was beinhaltet sie und gibt es Vereinsverpflichtungen?",
+    paragraphs: [
+      "Bei uns gibt es <strong>0 % Vereinsmeierei</strong>: Das bedeutet keine Pflicht-Arbeitsstunden, keine Zwangsversammlungen und kein bürokratisches Theater. Du bringst dich genau so viel oder wenig ein, wie es in deinen Alltag und dein Leben passt.",
+      "Unser Jahresbeitrag ist bewusst bodenständig und fair kalkuliert, um Radsport im Pott für alle bezahlbar zu halten (den aktuellen genauen Betrag findest du transparent im verlinkten Mitgliedsantrag-PDF)."
+    ],
+    bullets: [
+      "<strong>Bioracer Team-Kit:</strong> Exklusiver Zugang zu unseren hochwertigen Vereinstrikots, Hosen, Windwesten und Accessoires von Bioracer zu fairen Club-Konditionen.",
+      "<strong>BDR- & Verbandsschutz:</strong> Volle Sportunfall- und Haftpflichtversicherung über den Bund Deutscher Radfahrer (BDR) und Landessportbund bei Vereinsausfahrten sowie die Option auf offizielle BDR-Rennlizenzen und Breitensport-Wertungskarten.",
+      "<strong>Interne Community & WhatsApp:</strong> Direkter Draht zu unseren Club-Chats für spontane Feierabendrunden, Materialtipps, gemeinsame Trainingsfahrten und gemeinsame Starts bei Jedermann-Rennen, RTFs oder Brevets.",
+      "<strong>Vereinsleben ohne Zwang:</strong> Saisoneröffnung, gemeinsame Halden-Events, lockere Club-Abende und Kaltgetränke nach dem Ride."
+    ]
+  },
+  {
+    question: "Wo starten eure Ausfahrten meistens und woher bekomme ich die Route?",
+    paragraphs: [
+      "Da unsere Mitglieder im gesamten Ruhrgebiet verteilt leben – vor allem im Ballungsraum Essen, Gelsenkirchen, Gladbeck und Recklinghausen sowie Bochum, Bottrop und Oberhausen – variieren unsere Startpunkte bewusst je nach Streckenverlauf.",
+      "Typische, gut erreichbare Klassiker-Treffpunkte sind zum Beispiel die <em>Schwimmhalle Gelsenkirchen-Horst</em> (direkt am Nordsternpark), das Welterbe <em>Zeche Zollverein</em> in Essen, der <em>Kaisergarten Oberhausen</em> oder markante Trassen-Kreuze an der <em>Erzbahntrasse</em>.",
+      "Alle offiziellen Vereinsausfahrten planen wir mit ausreichend Vorlauf auf <strong>Joinride</strong>. Dort findest du neben dem exakten Startort auch das Streckenprofil und den <strong>herunterladbaren GPX-Track</strong> für deinen Radcomputer (Garmin, Wahoo etc.) oder dein Smartphone. Spontane Feierabendrunden kündigen wir außerdem regelmäßig in unserer Instagram-Story (<strong>@dynamoruhr</strong>) an."
+    ]
+  }
+];
+---
+
+<section id="faq" class="py-20 lg:py-28 bg-surface-dark border-b border-surface-border relative">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider mb-3">
+        Häufige Fragen
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight font-display">
+        Fragen vor dem ersten Tritt?
+      </h2>
+      <p class="text-gray-400 mt-3 text-base sm:text-lg">
+        Alles, was du über unsere Ausfahrten, das Mitfahren und den Verein wissen musst – ehrlich, ausführlich und ohne Fachchinesisch.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <details 
+          class="group bg-surface-card border border-surface-border rounded-2xl transition-all duration-300 hover:border-primary/40 open:border-primary/60 open:shadow-lg overflow-hidden"
+        >
+          <summary 
+            class="flex items-center justify-between p-6 cursor-pointer list-none select-none text-white font-display font-bold text-lg sm:text-xl transition-colors group-hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl"
+          >
+            <span class="pr-6 leading-snug">{faq.question}</span>
+            <span class="shrink-0 w-8 h-8 rounded-full bg-surface-dark border border-surface-border flex items-center justify-center text-primary group-open:rotate-180 transition-transform duration-300" aria-hidden="true">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-surface-border/40 font-sans space-y-3">
+            {faq.paragraphs.map(paragraph => (
+              <p set:html={paragraph} />
+            ))}
+
+            {faq.bullets && faq.bullets.length > 0 && (
+              <ul class="space-y-2.5 my-3 pl-0.5">
+                {faq.bullets.map(bullet => (
+                  <li class="flex items-start gap-3 text-gray-300">
+                    <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/10 border border-primary/30 text-primary shrink-0 mt-0.5 text-xs font-bold" aria-hidden="true">
+                      ✓
+                    </span>
+                    <span set:html={bullet} class="leading-relaxed"></span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {faq.closingParagraph && (
+              <p class="leading-relaxed pt-1" set:html={faq.closingParagraph} />
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Bottom Reassurance / Direct Contact CTA -->
+    <div class="mt-12 text-center p-6 rounded-2xl bg-surface-card/60 border border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-left">
+        <h3 class="text-base font-bold text-white mb-1">Deine Frage war nicht dabei?</h3>
+        <p class="text-xs sm:text-sm text-gray-400">Schreib uns einfach kurz – wir antworten schnell, hilfsbereit und unkompliziert.</p>
+      </div>
+      <a 
+        href="#kontakt" 
+        class="min-h-[44px] inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0"
+      >
+        <span>Frage stellen</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -5,7 +5,9 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Groupride from '../components/Groupride.astro';
 import Babos from '../components/Babos.astro';
+import MembershipBenefits from '../components/MembershipBenefits.astro';
 import Quote from '../components/Quote.astro';
+import FAQ from '../components/FAQ.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { getCollection } from 'astro:content';
 
@@ -23,14 +25,17 @@ const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
     <!-- Hero Section -->
     <Hero />
 
-  <!-- Groupride Section -->
-  <Groupride />
+    <!-- Groupride Section -->
+    <Groupride />
 
-  <!-- Quote Section -->
-  <Quote />
+    <!-- Babos (Club Manifesto & Vorstand) Section -->
+    <Babos />
 
-  <!-- Babos (Vorstand) Section -->
-  <Babos />
+    <!-- Club-Vorteile Section -->
+    <MembershipBenefits />
+
+    <!-- Quote Section -->
+    <Quote />
 
   <!-- Latest News Section -->
   {latestNews.length > 0 && (
@@ -95,8 +100,11 @@ const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
     </section>
   )}
 
-  <!-- Contact Form Section -->
-  <ContactForm />
+  <!-- FAQ Section -->
+  <FAQ />
+
+    <!-- Contact Form Section -->
+    <ContactForm />
   </main>
   <Footer />
 </Layout>
