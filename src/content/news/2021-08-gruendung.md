@@ -67,4 +67,4 @@ Wir nutzen das Fundament aus Radsportverband NRW und Landessportbund (LSB) als B
 - Virtuelle Winter-Ausfahrten auf Zwift
 - After-Ride-Kaltgetränke und Treffen ohne steife Vereinsmeierei
 
-Du willst mit uns rollen? Tritt unserem [Strava-Club](https://strava.com/clubs/dynamoruhr) bei, folge uns auf [Instagram](https://instagram.com/dynamo_ruhr) oder lade dir direkt den [Mitgliedsantrag](/downloads/mitgliedsantrag.pdf) herunter!
+Du willst mit uns rollen? Tritt unserem [Strava-Club](https://strava.com/clubs/dynamoruhr) bei, folge uns auf [Instagram](https://instagram.com/dynamoruhr) oder lade dir direkt den [Mitgliedsantrag](/downloads/mitgliedsantrag.pdf) herunter!
