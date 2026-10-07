@@ -1,0 +1,13 @@
+{
+  "name": "RC Dynamo Ruhr e.V.",
+  "claim": "Radsportclub für Renn- und Genussradler*innen aus Essen, Gelsenkirchen, Recklinghausen und Umgebung.",
+  "slogan": "Ein Radsportclub, so schön wie seine Mitglieder",
+  "quote": {
+    "text": "In Deinem Alter würd' ich mich eher fragen, ob's nicht der Rücken ist, der beim Fahren so knackt, nicht die Sattelstütze!",
+    "author": "Zitat des Monats"
+  },
+  "contactEmail": "club@dynamoruhr.de",
+  "instagramUrl": "https://instagram.com/dynamo_ruhr",
+  "stravaClubUrl": "https://strava.com/clubs/dynamoruhr",
+  "membershipPdfPath": "/downloads/mitgliedsantrag.pdf"
+}

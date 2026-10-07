@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Groupride from '../components/Groupride.astro';
+import Babos from '../components/Babos.astro';
+import Quote from '../components/Quote.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch latest news for preview section
+const newsEntries = await getCollection('news');
+const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+---
+
+<Layout 
+  title="RC Dynamo Ruhr e.V. | Radsportverein für Rennrad & Gravel im Ruhrgebiet"
+  description="Offizieller Radsportverein im Revier: Regelmäßige Rennrad- und Gravel-Grouprides in Essen, Gelsenkirchen, Recklinghausen und Umgebung. Kette rechts, lockere Typen, #8000watt."
+>
+  <Header />
+  <main id="main-content" class="flex-grow">
+    <!-- Hero Section -->
+    <Hero />
+
+  <!-- Groupride Section -->
+  <Groupride />
+
+  <!-- Quote Section -->
+  <Quote />
+
+  <!-- Babos (Vorstand) Section -->
+  <Babos />
+
+  <!-- Latest News Section -->
+  {latestNews.length > 0 && (
+    <section class="py-20 lg:py-24 bg-surface-card/40 border-b border-surface-border">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider mb-3">
+              Aktuelles aus dem Club
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight font-display">
+              Neues von der Trasse
+            </h2>
+          </div>
+          <a 
+            href="/news" 
+            class="mt-4 sm:mt-0 inline-flex items-center gap-2 text-primary hover:text-primary-hover font-semibold text-sm group"
+          >
+            <span>Alle Artikel anzeigen</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {latestNews.map((article) => (
+            <article class="bg-surface-card rounded-2xl border border-surface-border p-6 flex flex-col justify-between hover:border-primary/50 transition-all duration-300 hover:shadow-glow">
+              <div>
+                <div class="flex items-center gap-3 text-xs text-gray-400 mb-3">
+                  <time datetime={article.data.date.toISOString()}>
+                    {new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'long', year: 'numeric' }).format(article.data.date)}
+                  </time>
+                  <span>•</span>
+                  <span class="text-primary font-medium">{article.data.author}</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3 font-display hover:text-primary transition-colors">
+                  <a href={`/news/${article.slug}`}>
+                    {article.data.title}
+                  </a>
+                </h3>
+                <p class="text-sm text-gray-400 line-clamp-3 leading-relaxed">
+                  {article.data.description}
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-surface-border/40">
+                <a 
+                  href={`/news/${article.slug}`} 
+                  class="text-xs font-bold text-primary hover:underline uppercase tracking-wider inline-flex items-center gap-1"
+                >
+                  <span>Weiterlesen</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  )}
+
+  <!-- Contact Form Section -->
+  <ContactForm />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,31 @@
+---
+import club from '../data/club.json';
+---
+
+<section class="py-16 sm:py-24 bg-surface-card/30 border-b border-surface-border relative overflow-hidden">
+  
+  <!-- Subtle decorative background quotation watermark -->
+  <div class="absolute -top-10 right-10 text-primary/5 select-none pointer-events-none text-9xl sm:text-[16rem] font-serif font-black leading-none">
+    “
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-card border border-surface-border text-gray-400 text-xs font-semibold uppercase tracking-wider mb-6">
+      <span class="w-2 h-2 rounded-full bg-primary"></span>
+      <span>{club.quote.author}</span>
+    </div>
+
+    <!-- The Quote -->
+    <blockquote class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white font-display leading-tight sm:leading-snug mb-6 tracking-tight">
+      „{club.quote.text}“
+    </blockquote>
+
+    <!-- Subline -->
+    <p class="text-sm sm:text-base text-gray-400 font-medium">
+      Gesehen und gehört auf den Trassen zwischen Essen, Gelsenkirchen und Recklinghausen.
+    </p>
+
+  </div>
+</section>

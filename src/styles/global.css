@@ -1,0 +1,58 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource/space-grotesk/latin-600.css';
+@import '@fontsource/space-grotesk/latin-700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #E94F1B;
+    --color-primary-hover: #C83E12;
+    --color-dark-bg: #111111;
+    --color-dark-surface: #1A1A1A;
+    --color-dark-border: #2A2A2A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size-adjust: from-font;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #111111;
+    color: #EDEDED;
+    font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter Variable', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #E94F1B;
+    outline-offset: 2px;
+  }
+}
+
+/* Custom micro-animations & utilities */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(233, 79, 27, 0.45);
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 15px rgba(233, 79, 27, 0.2);
+  }
+  
+  .bg-radial-gradient {
+    background: radial-gradient(circle at 50% 0%, rgba(233, 79, 27, 0.15) 0%, rgba(17, 17, 17, 0) 70%);
+  }
+}

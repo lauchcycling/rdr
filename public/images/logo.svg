@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none" role="img" aria-label="RC Dynamo Ruhr Logo">
+  <!-- Dynamic Gear / Dynamo Bolt Symbol -->
+  <g transform="translate(10, 6)">
+    <!-- Outer energy ring -->
+    <circle cx="24" cy="24" r="22" stroke="#E94F1B" stroke-width="3" stroke-dasharray="14 4" stroke-linecap="round"/>
+    <!-- Inner cog circle -->
+    <circle cx="24" cy="24" r="14" fill="#111111" stroke="#E94F1B" stroke-width="2"/>
+    <!-- High voltage dynamo lightning bolt -->
+    <path d="M26 12L17 25H25L22 36L31 23H23L26 12Z" fill="#E94F1B"/>
+  </g>
+  <!-- Typography -->
+  <text x="68" y="32" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="900" font-size="20" letter-spacing="0.05em" fill="#EDEDED">
+    DYNAMO<tspan fill="#E94F1B">RUHR</tspan>
+  </text>
+  <text x="69" y="47" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="9" letter-spacing="0.25em" fill="#9CA3AF">
+    RC E.V. • EST. 2021
+  </text>
+</svg>

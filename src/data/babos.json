@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Alex Kensy",
+    "role": "Vorsitzender",
+    "quote": "Lauch als Lebensgefühl.",
+    "bio": "Auf nichts genaues Specialized. Fährt ausschließlich mit Radcomputer und keinesfalls tubeless.",
+    "image": "/images/alex.webp"
+  },
+  {
+    "name": "Lars Wöhning",
+    "role": "Schatzmeister",
+    "quote": "Wir sehen uns im Sauerstoffzelt.",
+    "bio": "Räder aus Plastik, Waden aus Stahl. Ü40 (auch der FTP) mit Hang zu Bunny Hops und After-Ride-Bierchen.",
+    "image": "/images/lars.webp"
+  }
+]

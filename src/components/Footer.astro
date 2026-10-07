@@ -1,0 +1,100 @@
+---
+import club from '../data/club.json';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-surface-dark border-t border-surface-border text-gray-400 text-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-12 mb-12">
+      
+      <!-- Column 1: Brand & Slogan -->
+      <div class="md:col-span-2 space-y-4">
+        <a href="/" class="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg">
+          <img 
+            src="/images/logo.svg" 
+            alt="RC Dynamo Ruhr e.V." 
+            class="h-9 w-auto" 
+            width="180" 
+            height="45"
+          />
+        </a>
+        <p class="text-gray-300 font-medium italic font-display text-base">
+          „{club.slogan}“
+        </p>
+        <p class="text-xs text-gray-400 max-w-md leading-relaxed">
+          {club.claim}
+        </p>
+        
+        <div class="pt-2 flex items-center gap-3 text-xs text-gray-500">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-card border border-surface-border text-green-400 font-mono">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+            100% DSGVO-konform
+          </span>
+          <span>0% Tracking • 0 Cookies</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Schnelle Links -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4 font-display">Navigation</h4>
+        <ul class="space-y-2.5 text-xs sm:text-sm">
+          <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+          <li><a href="/#groupride" class="hover:text-primary transition-colors">Grouprides & Termine</a></li>
+          <li><a href="/#babos" class="hover:text-primary transition-colors">Vorstand & Club</a></li>
+          <li><a href="/news" class="hover:text-primary transition-colors">Vereins-News</a></li>
+          <li><a href="/#kontakt" class="hover:text-primary transition-colors">Kontakt</a></li>
+          <li>
+            <a 
+              href={club.membershipPdfPath} 
+              target="_blank"
+              rel="noopener noreferrer"
+              download 
+              class="text-primary hover:underline font-semibold flex items-center gap-1"
+            >
+              <span>Mitgliedsantrag (PDF)</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Community & Rechtliches -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4 font-display">Community & Recht</h4>
+        <ul class="space-y-2.5 text-xs sm:text-sm">
+          <li>
+            <a href={club.stravaClubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#FC6100] transition-colors flex items-center gap-2">
+              <span>Strava Club</span>
+            </a>
+          </li>
+          <li>
+            <a href={club.instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#E4405F] transition-colors flex items-center gap-2">
+              <span>Instagram @dynamo_ruhr</span>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${club.contactEmail}`} class="hover:text-primary transition-colors">
+              {club.contactEmail}
+            </a>
+          </li>
+          <li class="pt-3 border-t border-surface-border/60">
+            <a href="/impressum" class="hover:text-primary transition-colors font-medium">Impressum</a>
+          </li>
+          <li>
+            <a href="/datenschutz" class="hover:text-primary transition-colors font-medium">Datenschutzerklärung</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="pt-8 border-t border-surface-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <p>© {currentYear} {club.name}. Alle Rechte vorbehalten.</p>
+      <p class="text-gray-400 font-mono">Gebaut mit <span class="text-primary">♥</span> im Ruhrgebiet. Keine Kekse, kein Bullshit.</p>
+    </div>
+
+  </div>
+</footer>

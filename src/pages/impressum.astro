@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import club from '../data/club.json';
+---
+
+<Layout 
+  title="Impressum | RC Dynamo Ruhr e.V."
+  description="Impressum und rechtliche Angaben des RC Dynamo Ruhr e.V. nach § 5 TMG und § 18 MStV."
+>
+  <Header />
+  <main class="flex-grow">
+    <div class="py-16 sm:py-24 bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Back Link -->
+      <div class="mb-10">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-2 text-xs font-semibold text-gray-400 hover:text-primary transition-colors uppercase tracking-wider"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          <span>Zurück zur Startseite</span>
+        </a>
+      </div>
+
+      <header class="mb-12 pb-6 border-b border-surface-border">
+        <h1 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight font-display mb-3">
+          Impressum
+        </h1>
+        <p class="text-gray-400 text-sm sm:text-base">
+          Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG) und § 18 Abs. 2 Medienstaatsvertrag (MStV)
+        </p>
+      </header>
+
+      <div class="space-y-10 text-gray-300 text-sm sm:text-base leading-relaxed">
+        
+        <!-- Vereinsdaten -->
+        <section class="bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white font-display mb-4 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span>Angaben zum Verein</span>
+          </h2>
+          <p class="font-semibold text-white">{club.name}</p>
+          <p>Sitz: Recklinghausen / Essen</p>
+          <p>E-Mail: <a href={`mailto:${club.contactEmail}`} class="text-primary hover:underline">{club.contactEmail}</a></p>
+          <p>Website: <a href="https://dynamoruhr.de" class="text-primary hover:underline">dynamoruhr.de</a></p>
+        </section>
+
+        <!-- Vertretungsberechtigter Vorstand -->
+        <section class="bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white font-display mb-4 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span>Vertretungsberechtigter Vorstand (§ 26 BGB)</span>
+          </h2>
+          <ul class="space-y-2">
+            <li><strong class="text-white">Alex Kensy</strong> (1. Vorsitzender)</li>
+            <li><strong class="text-white">Lars Wöhning</strong> (Schatzmeister)</li>
+          </ul>
+        </section>
+
+        <!-- Registereintragung -->
+        <section class="bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white font-display mb-4 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span>Registereintrag</span>
+          </h2>
+          <p>Eintragung im Vereinsregister.</p>
+          <p>Registergericht: Amtsgericht Recklinghausen / Essen</p>
+          <p>Registernummer: VR [Eintragung im Vereinsregister]</p>
+        </section>
+
+        <!-- Redaktionell verantwortlich -->
+        <section class="bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white font-display mb-4 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span>Verantwortlich für redaktionelle Inhalte (§ 18 Abs. 2 MStV)</span>
+          </h2>
+          <p class="font-semibold text-white">Alex Kensy</p>
+          <p>RC Dynamo Ruhr e.V.</p>
+          <p>E-Mail: <a href={`mailto:${club.contactEmail}`} class="text-primary hover:underline">{club.contactEmail}</a></p>
+        </section>
+
+        <!-- Haftungsausschluss -->
+        <section class="space-y-6 pt-4 border-t border-surface-border">
+          <div>
+            <h3 class="text-lg font-bold text-white font-display mb-2">Haftung für Inhalte</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold text-white font-display mb-2">Haftung für Links</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Unser Angebot enthält Links zu externen Websites Dritter (z. B. Strava, Instagram), auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold text-white font-display mb-2">Urheberrecht</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Erstellers.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  </main>
+  <Footer />
+</Layout>
