@@ -8,13 +8,16 @@ import club from '../data/club.json';
       
       <!-- Brand Logo -->
       <a href="/" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg py-1" aria-label="RC Dynamo Ruhr e.V. Startseite">
-        <img 
-          src="/images/logo.svg" 
-          alt="RC Dynamo Ruhr e.V. – Radsportverein für Rennrad & Gravel im Ruhrgebiet" 
-          class="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-          width="180" 
-          height="45"
-        />
+        <picture>
+          <source srcset="/images/logo.webp" type="image/webp" />
+          <img 
+            src="/images/logo.png" 
+            alt="RC Dynamo Ruhr e.V. – Radsportverein für Rennrad & Gravel im Ruhrgebiet" 
+            class="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            width="200" 
+            height="86"
+          />
+        </picture>
       </a>
 
       <!-- Desktop Navigation Links -->

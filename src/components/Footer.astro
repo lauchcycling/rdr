@@ -12,13 +12,16 @@ const currentYear = new Date().getFullYear();
       <!-- Column 1: Brand & Slogan -->
       <div class="md:col-span-2 space-y-4">
         <a href="/" class="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg">
-          <img 
-            src="/images/logo.svg" 
-            alt="RC Dynamo Ruhr e.V." 
-            class="h-9 w-auto" 
-            width="180" 
-            height="45"
-          />
+          <picture>
+            <source srcset="/images/logo.webp" type="image/webp" />
+            <img 
+              src="/images/logo.png" 
+              alt="RC Dynamo Ruhr e.V. – Radsport im Revier" 
+              class="h-9 w-auto object-contain" 
+              width="180" 
+              height="78"
+            />
+          </picture>
         </a>
         <p class="text-gray-300 font-medium italic font-display text-base">
           „{club.slogan}“
@@ -26,14 +29,6 @@ const currentYear = new Date().getFullYear();
         <p class="text-xs text-gray-400 max-w-md leading-relaxed">
           {club.claim}
         </p>
-        
-        <div class="pt-2 flex items-center gap-3 text-xs text-gray-500">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-card border border-surface-border text-green-400 font-mono">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-            100% DSGVO-konform
-          </span>
-          <span>0% Tracking • 0 Cookies</span>
-        </div>
       </div>
 
       <!-- Column 2: Schnelle Links -->
@@ -41,8 +36,8 @@ const currentYear = new Date().getFullYear();
         <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4 font-display">Navigation</h4>
         <ul class="space-y-2.5 text-xs sm:text-sm">
           <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
-          <li><a href="/#groupride" class="hover:text-primary transition-colors">Grouprides & Termine</a></li>
-          <li><a href="/#babos" class="hover:text-primary transition-colors">Vorstand & Club</a></li>
+          <li><a href="/#groupride" class="hover:text-primary transition-colors">Grouprides</a></li>
+          <li><a href="/#babos" class="hover:text-primary transition-colors">Der Club</a></li>
           <li><a href="/news" class="hover:text-primary transition-colors">Vereins-News</a></li>
           <li><a href="/#kontakt" class="hover:text-primary transition-colors">Kontakt</a></li>
           <li>
@@ -93,7 +88,7 @@ const currentYear = new Date().getFullYear();
     <!-- Bottom Copyright -->
     <div class="pt-8 border-t border-surface-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
       <p>© {currentYear} {club.name}. Alle Rechte vorbehalten.</p>
-      <p class="text-gray-400 font-mono">Gebaut mit <span class="text-primary">♥</span> im Ruhrgebiet. Keine Kekse, kein Bullshit.</p>
+      <p class="text-gray-400">Keine Cookies, kein Tracking. 100% Ruhrgebiet.</p>
     </div>
 
   </div>
