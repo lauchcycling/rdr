@@ -112,7 +112,7 @@ export function parseJoinrideActivity(item: any): JoinrideRide {
     cleanInfo = cleanInfo.slice(0, 277) + '...';
   }
   if (!cleanInfo) {
-    cleanInfo = 'Helmpflicht! Wir fahren zusammen und warten aufeinander. Niemand wird zurückgelassen.';
+    cleanInfo = 'Helmpflicht auf jedem Ride. Wir passen das Tempo an die Gruppe an und rollen gemeinsam ins Ziel.';
   }
 
   return {
