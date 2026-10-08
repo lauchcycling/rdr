@@ -13,7 +13,7 @@ const isNews = currentPath.startsWith('/news');
       <!-- Brand Logo (Enlarged for clear legibility of 'RC Dynamo Ruhr') -->
       <a 
         href="/" 
-        class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg py-1" 
+        class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg py-1 shrink-0" 
         aria-label="RC Dynamo Ruhr e.V. – Zurück zur Startseite"
       >
         <picture>
@@ -29,11 +29,11 @@ const isNews = currentPath.startsWith('/news');
       </a>
 
       <!-- Desktop Navigation Links (Pure text color highlight, no button/border style) -->
-      <nav id="desktop-nav" class="hidden md:flex items-center space-x-1 lg:space-x-3 text-sm font-medium" aria-label="Hauptnavigation">
+      <nav id="desktop-nav" class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-medium" aria-label="Hauptnavigation">
         <a 
-          href="/#hero" 
+          href={isHome ? "/#hero" : "/"} 
           data-nav-section="hero"
-          class={`desktop-nav-link px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
+          class={`desktop-nav-link px-2.5 xl:px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
           aria-current={isHome ? 'page' : undefined}
         >
           Home
@@ -41,45 +41,59 @@ const isNews = currentPath.startsWith('/news');
         <a 
           href="/#groupride" 
           data-nav-section="groupride"
-          class="desktop-nav-link px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+          class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
-          <span>Groupride</span>
+          <span>Grouprides</span>
           <span class="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true"></span>
         </a>
         <a 
           href="/#babos" 
           data-nav-section="babos"
-          class="desktop-nav-link px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+          class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           Club
         </a>
         <a 
+          href="/#vorteile" 
+          data-nav-section="vorteile"
+          class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+        >
+          Vorteile
+        </a>
+        <a 
           href={isHome ? "/#news" : "/news"} 
           data-nav-section="news"
-          class={`desktop-nav-link px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
+          class={`desktop-nav-link px-2.5 xl:px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
           aria-current={isNews ? 'page' : undefined}
         >
           News
         </a>
         <a 
+          href="/#faq" 
+          data-nav-section="faq"
+          class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+        >
+          FAQ
+        </a>
+        <a 
           href="/#kontakt" 
           data-nav-section="kontakt"
-          class="desktop-nav-link px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+          class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           Kontakt
         </a>
       </nav>
 
       <!-- Social Icons & CTA Button -->
-      <div class="hidden sm:flex items-center space-x-4">
-        <!-- Socials -->
-        <div class="flex items-center space-x-2 border-r border-surface-border pr-4">
+      <div class="hidden sm:flex items-center space-x-3 lg:space-x-4">
+        <!-- Socials (Desktop >= 1024px) -->
+        <div class="hidden lg:flex items-center space-x-2 border-r border-surface-border pr-3 lg:pr-4">
           <!-- Strava -->
           <a 
             href={club.stravaClubUrl} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 text-gray-300 hover:text-[#FC6100] hover:bg-surface-card rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" 
+            class="min-w-[40px] min-h-[40px] flex items-center justify-center p-2 text-gray-300 hover:text-[#FC6100] hover:bg-surface-card rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" 
             aria-label="RC Dynamo Ruhr auf Strava (öffnet in neuem Tab)"
           >
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -91,7 +105,7 @@ const isNews = currentPath.startsWith('/news');
             href={club.instagramUrl} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 text-gray-300 hover:text-[#E4405F] hover:bg-surface-card rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" 
+            class="min-w-[40px] min-h-[40px] flex items-center justify-center p-2 text-gray-300 hover:text-[#E4405F] hover:bg-surface-card rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" 
             aria-label="RC Dynamo Ruhr auf Instagram (öffnet in neuem Tab)"
           >
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -103,12 +117,12 @@ const isNews = currentPath.startsWith('/news');
         <!-- CTA Button (Touch target 44px+) -->
         <a 
           href={club.membershipPdfPath} 
-          target="_blank"
-          rel="noopener noreferrer"
+          target="_blank" 
+          rel="noopener noreferrer" 
           download 
-          class="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold tracking-wide shadow-md transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary active:scale-95"
+          class="inline-flex items-center gap-2 px-3.5 xl:px-4 py-2.5 min-h-[44px] rounded-lg bg-primary hover:bg-primary-hover text-white text-xs xl:text-sm font-semibold tracking-wide shadow-md transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary active:scale-95 shrink-0"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
           <span>Mitglied werden</span>
@@ -116,8 +130,8 @@ const isNews = currentPath.startsWith('/news');
         </a>
       </div>
 
-      <!-- Mobile Menu Toggle Button (Touch target 48x48px) -->
-      <div class="flex items-center sm:hidden">
+      <!-- Mobile Menu Toggle Button (Touch target 48x48px, visible on screens < lg) -->
+      <div class="flex items-center lg:hidden">
         <button 
           id="mobile-menu-btn" 
           type="button" 
@@ -139,32 +153,86 @@ const isNews = currentPath.startsWith('/news');
   </div>
 
   <!-- Mobile Dropdown Navigation -->
-  <nav id="mobile-menu" class="hidden sm:hidden bg-surface-card border-b border-surface-border px-4 pt-3 pb-6 space-y-2" aria-label="Mobile Navigation">
-    <a href="/" class={`mobile-nav-link block px-3 py-3 rounded-md text-base font-medium ${isHome ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} aria-current={isHome ? 'page' : undefined}>Home</a>
-    <a href="/#groupride" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark">Groupride</a>
-    <a href="/#babos" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark">Club</a>
-    <a href="/news" class={`mobile-nav-link block px-3 py-3 rounded-md text-base font-medium ${isNews ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} aria-current={isNews ? 'page' : undefined}>News</a>
-    <a href="/#kontakt" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark">Kontakt</a>
+  <nav id="mobile-menu" class="hidden lg:hidden bg-surface-card border-b border-surface-border px-4 pt-3 pb-6 space-y-1.5" aria-label="Mobile Navigation">
+    <a 
+      href={isHome ? "/#hero" : "/"} 
+      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors ${isHome ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} 
+      aria-current={isHome ? 'page' : undefined}
+    >
+      Home
+    </a>
+    <a 
+      href="/#groupride" 
+      class="mobile-nav-link flex items-center justify-between px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
+    >
+      <span>Grouprides</span>
+      <span class="inline-flex items-center gap-1.5 text-xs text-primary font-semibold bg-primary/10 px-2.5 py-1 rounded-full border border-primary/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        <span>Ausfahrten</span>
+      </span>
+    </a>
+    <a 
+      href="/#babos" 
+      class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
+    >
+      Club & Babos
+    </a>
+    <a 
+      href="/#vorteile" 
+      class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
+    >
+      Vorteile
+    </a>
+    <a 
+      href={isHome ? "/#news" : "/news"} 
+      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors ${isNews ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} 
+      aria-current={isNews ? 'page' : undefined}
+    >
+      News
+    </a>
+    <a 
+      href="/#faq" 
+      class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
+    >
+      FAQ (Häufige Fragen)
+    </a>
+    <a 
+      href="/#kontakt" 
+      class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
+    >
+      Kontakt
+    </a>
     
-    <div class="pt-4 border-t border-surface-border/60 flex items-center justify-between">
-      <div class="flex items-center space-x-2">
-        <a href={club.stravaClubUrl} target="_blank" rel="noopener noreferrer" class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-200 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Strava Club (öffnet in neuem Tab)">
+    <div class="pt-4 mt-2 border-t border-surface-border/60 flex items-center justify-between gap-3">
+      <div class="flex items-center space-x-1">
+        <a 
+          href={club.stravaClubUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-200 hover:text-[#FC6100] hover:bg-surface-dark rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" 
+          aria-label="Strava Club (öffnet in neuem Tab)"
+        >
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.93 15.773h4.173"/></svg>
         </a>
-        <a href={club.instagramUrl} target="_blank" rel="noopener noreferrer" class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-200 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Instagram (öffnet in neuem Tab)">
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
+        <a 
+          href={club.instagramUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-200 hover:text-[#E4405F] hover:bg-surface-dark rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" 
+          aria-label="Instagram (öffnet in neuem Tab)"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
       </div>
       <a 
         href={club.membershipPdfPath} 
-        target="_blank"
-        rel="noopener noreferrer"
+        target="_blank" 
+        rel="noopener noreferrer" 
         download 
-        class="inline-flex items-center gap-1.5 px-3 py-2 min-h-[44px] rounded-md bg-primary hover:bg-primary-hover text-white text-xs font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2.5 min-h-[44px] rounded-lg bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary active:scale-95"
       >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
         <span>Mitgliedsantrag (PDF)</span>
-        <span class="sr-only">(öffnet in neuem Tab)</span>
       </a>
     </div>
   </nav>
@@ -198,7 +266,10 @@ const isNews = currentPath.startsWith('/news');
     }
 
     if (menuBtn && mobileMenu && hamburgerIcon && closeIcon) {
-      menuBtn.addEventListener('click', () => toggleMenu());
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
 
       document.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.addEventListener('click', () => toggleMenu(false));
@@ -210,16 +281,27 @@ const isNews = currentPath.startsWith('/news');
           menuBtn.focus();
         }
       });
+
+      // Close menu on outside click
+      document.addEventListener('click', (event) => {
+        if (
+          menuBtn.getAttribute('aria-expanded') === 'true' &&
+          !mobileMenu.contains(event.target) &&
+          !menuBtn.contains(event.target)
+        ) {
+          toggleMenu(false);
+        }
+      });
     }
 
-    // 2. Desktop Scrollspy (Active viewport text color highlight - DESKTOP ONLY >= 768px)
+    // 2. Desktop Scrollspy (Active viewport text color highlight - DESKTOP ONLY >= 1024px)
     function initDesktopScrollspy() {
-      if (window.innerWidth < 768) return;
+      if (window.innerWidth < 1024) return;
 
       const navLinks = Array.from(document.querySelectorAll('.desktop-nav-link[data-nav-section]'));
       if (!navLinks.length) return;
 
-      const sectionIds = ['hero', 'groupride', 'babos', 'news', 'kontakt'];
+      const sectionIds = ['hero', 'groupride', 'babos', 'vorteile', 'news', 'faq', 'kontakt'];
       const targetSections = sectionIds
         .map(id => document.getElementById(id))
         .filter(el => el !== null);
@@ -248,7 +330,7 @@ const isNews = currentPath.startsWith('/news');
       }
 
       function handleScroll() {
-        if (window.innerWidth < 768) return;
+        if (window.innerWidth < 1024) return;
 
         const scrollY = window.scrollY;
 
@@ -269,7 +351,7 @@ const isNews = currentPath.startsWith('/news');
         for (let i = targetSections.length - 1; i >= 0; i--) {
           const el = targetSections[i];
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 220 && rect.bottom > 100) {
+          if (rect.top <= 240 && rect.bottom > 100) {
             activeId = el.id;
             break;
           }
@@ -299,7 +381,7 @@ const isNews = currentPath.startsWith('/news');
       window.addEventListener('scroll', onScroll, { passive: true });
       document.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) handleScroll();
+        if (window.innerWidth >= 1024) handleScroll();
       });
 
       // Initial check on load

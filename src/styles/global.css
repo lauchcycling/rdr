@@ -17,6 +17,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     font-size-adjust: from-font;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
