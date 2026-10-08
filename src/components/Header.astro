@@ -33,7 +33,7 @@ const isNews = currentPath.startsWith('/news');
         <a 
           href={isHome ? "#hero" : "/"} 
           data-nav-section="hero"
-          class={`desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'is-active text-primary font-bold' : ''}`}
+          class={`desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'is-active' : ''}`}
           aria-current={isHome ? 'page' : undefined}
         >
           Home
@@ -63,7 +63,7 @@ const isNews = currentPath.startsWith('/news');
         <a 
           href={isHome ? "#news" : "/news"} 
           data-nav-section="news"
-          class={`desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'is-active text-primary font-bold' : ''}`}
+          class={`desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'is-active' : ''}`}
           aria-current={isNews ? 'page' : undefined}
         >
           News
@@ -157,7 +157,7 @@ const isNews = currentPath.startsWith('/news');
     <a 
       href={isHome ? "#hero" : "/"} 
       data-nav-section="hero"
-      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors text-gray-100 hover:text-primary hover:bg-surface-dark ${isHome ? 'is-active text-primary font-bold bg-surface-dark' : ''}`} 
+      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors text-gray-100 hover:text-primary hover:bg-surface-dark ${isHome ? 'is-active' : ''}`} 
       aria-current={isHome ? 'page' : undefined}
     >
       Home
@@ -190,7 +190,7 @@ const isNews = currentPath.startsWith('/news');
     <a 
       href={isHome ? "#news" : "/news"} 
       data-nav-section="news"
-      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors text-gray-100 hover:text-primary hover:bg-surface-dark ${isNews ? 'is-active text-primary font-bold bg-surface-dark' : ''}`} 
+      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors text-gray-100 hover:text-primary hover:bg-surface-dark ${isNews ? 'is-active' : ''}`} 
       aria-current={isNews ? 'page' : undefined}
     >
       News
@@ -333,7 +333,7 @@ const isNews = currentPath.startsWith('/news');
           link.classList.add('is-active');
           link.setAttribute('aria-current', 'true');
         } else {
-          link.classList.remove('is-active');
+          link.classList.remove('is-active', 'text-primary', 'font-bold');
           link.removeAttribute('aria-current');
         }
       });
@@ -345,7 +345,7 @@ const isNews = currentPath.startsWith('/news');
           link.classList.add('is-active');
           link.setAttribute('aria-current', 'true');
         } else {
-          link.classList.remove('is-active');
+          link.classList.remove('is-active', 'text-primary', 'font-bold', 'bg-surface-dark');
           link.removeAttribute('aria-current');
         }
       });
