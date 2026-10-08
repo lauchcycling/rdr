@@ -6,7 +6,6 @@ import Hero from '../components/Hero.astro';
 import Groupride from '../components/Groupride.astro';
 import Babos from '../components/Babos.astro';
 import MembershipBenefits from '../components/MembershipBenefits.astro';
-import Quote from '../components/Quote.astro';
 import FAQ from '../components/FAQ.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { getCollection } from 'astro:content';
@@ -33,9 +32,6 @@ const latestNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.dat
 
     <!-- Club-Vorteile Section -->
     <MembershipBenefits />
-
-    <!-- Quote Section -->
-    <Quote />
 
   <!-- Latest News Section -->
   {latestNews.length > 0 && (

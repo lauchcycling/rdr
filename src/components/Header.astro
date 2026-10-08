@@ -2,7 +2,7 @@
 import club from '../data/club.json';
 
 const currentPath = Astro.url.pathname;
-const isHome = currentPath === '/';
+const isHome = currentPath === '/' || currentPath === '';
 const isNews = currentPath.startsWith('/news');
 ---
 
@@ -31,7 +31,7 @@ const isNews = currentPath.startsWith('/news');
       <!-- Desktop Navigation Links (Pure text color highlight, no button/border style) -->
       <nav id="desktop-nav" class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-medium" aria-label="Hauptnavigation">
         <a 
-          href={isHome ? "/#hero" : "/"} 
+          href={isHome ? "#hero" : "/"} 
           data-nav-section="hero"
           class={`desktop-nav-link px-2.5 xl:px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
           aria-current={isHome ? 'page' : undefined}
@@ -39,7 +39,7 @@ const isNews = currentPath.startsWith('/news');
           Home
         </a>
         <a 
-          href="/#groupride" 
+          href={isHome ? "#groupride" : "/#groupride"} 
           data-nav-section="groupride"
           class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
@@ -47,21 +47,21 @@ const isNews = currentPath.startsWith('/news');
           <span class="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true"></span>
         </a>
         <a 
-          href="/#babos" 
+          href={isHome ? "#babos" : "/#babos"} 
           data-nav-section="babos"
           class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           Club
         </a>
         <a 
-          href="/#vorteile" 
+          href={isHome ? "#vorteile" : "/#vorteile"} 
           data-nav-section="vorteile"
           class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           Vorteile
         </a>
         <a 
-          href={isHome ? "/#news" : "/news"} 
+          href={isHome ? "#news" : "/news"} 
           data-nav-section="news"
           class={`desktop-nav-link px-2.5 xl:px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
           aria-current={isNews ? 'page' : undefined}
@@ -69,14 +69,14 @@ const isNews = currentPath.startsWith('/news');
           News
         </a>
         <a 
-          href="/#faq" 
+          href={isHome ? "#faq" : "/#faq"} 
           data-nav-section="faq"
           class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           FAQ
         </a>
         <a 
-          href="/#kontakt" 
+          href={isHome ? "#kontakt" : "/#kontakt"} 
           data-nav-section="kontakt"
           class="desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
@@ -155,14 +155,16 @@ const isNews = currentPath.startsWith('/news');
   <!-- Mobile Dropdown Navigation -->
   <nav id="mobile-menu" class="hidden lg:hidden bg-surface-card border-b border-surface-border px-4 pt-3 pb-6 space-y-1.5" aria-label="Mobile Navigation">
     <a 
-      href={isHome ? "/#hero" : "/"} 
+      href={isHome ? "#hero" : "/"} 
+      data-nav-section="hero"
       class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors ${isHome ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} 
       aria-current={isHome ? 'page' : undefined}
     >
       Home
     </a>
     <a 
-      href="/#groupride" 
+      href={isHome ? "#groupride" : "/#groupride"} 
+      data-nav-section="groupride"
       class="mobile-nav-link flex items-center justify-between px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
     >
       <span>Grouprides</span>
@@ -172,32 +174,37 @@ const isNews = currentPath.startsWith('/news');
       </span>
     </a>
     <a 
-      href="/#babos" 
+      href={isHome ? "#babos" : "/#babos"} 
+      data-nav-section="babos"
       class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
     >
       Club & Babos
     </a>
     <a 
-      href="/#vorteile" 
+      href={isHome ? "#vorteile" : "/#vorteile"} 
+      data-nav-section="vorteile"
       class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
     >
       Vorteile
     </a>
     <a 
-      href={isHome ? "/#news" : "/news"} 
+      href={isHome ? "#news" : "/news"} 
+      data-nav-section="news"
       class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors ${isNews ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} 
       aria-current={isNews ? 'page' : undefined}
     >
       News
     </a>
     <a 
-      href="/#faq" 
+      href={isHome ? "#faq" : "/#faq"} 
+      data-nav-section="faq"
       class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
     >
       FAQ (Häufige Fragen)
     </a>
     <a 
-      href="/#kontakt" 
+      href={isHome ? "#kontakt" : "/#kontakt"} 
+      data-nav-section="kontakt"
       class="mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium text-gray-100 hover:text-primary hover:bg-surface-dark transition-colors"
     >
       Kontakt
@@ -271,10 +278,6 @@ const isNews = currentPath.startsWith('/news');
         toggleMenu();
       });
 
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-      });
-
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
           toggleMenu(false);
@@ -294,101 +297,146 @@ const isNews = currentPath.startsWith('/news');
       });
     }
 
-    // 2. Desktop Scrollspy (Active viewport text color highlight - DESKTOP ONLY >= 1024px)
-    function initDesktopScrollspy() {
-      if (window.innerWidth < 1024) return;
+    // 2. Navigation Highlighting & Scrollspy (Universal for Desktop & Mobile)
+    const sectionIds = ['hero', 'groupride', 'babos', 'vorteile', 'news', 'faq', 'kontakt'];
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(el => el !== null);
 
-      const navLinks = Array.from(document.querySelectorAll('.desktop-nav-link[data-nav-section]'));
-      if (!navLinks.length) return;
+    // Only run scrollspy if homepage sections exist
+    if (sections.length < 2) return;
 
-      const sectionIds = ['hero', 'groupride', 'babos', 'vorteile', 'news', 'faq', 'kontakt'];
-      const targetSections = sectionIds
-        .map(id => document.getElementById(id))
-        .filter(el => el !== null);
+    let currentActiveId = null;
+    let lockedSectionId = null;
+    let unlockTimeout = null;
 
-      // Only run scrollspy if homepage sections exist
-      if (targetSections.length < 2) return;
+    function applyHighlight(activeId) {
+      if (!activeId || currentActiveId === activeId) return;
+      currentActiveId = activeId;
 
-      let currentActiveId = null;
-
-      function highlightSection(activeId) {
-        if (currentActiveId === activeId) return;
-        currentActiveId = activeId;
-
-        navLinks.forEach(link => {
-          const sec = link.getAttribute('data-nav-section');
-          if (sec === activeId) {
-            link.classList.add('text-primary', 'font-bold');
-            link.classList.remove('text-gray-200');
-            link.setAttribute('aria-current', 'true');
-          } else {
-            link.classList.remove('text-primary', 'font-bold');
-            link.classList.add('text-gray-200');
-            link.removeAttribute('aria-current');
-          }
-        });
-      }
-
-      function handleScroll() {
-        if (window.innerWidth < 1024) return;
-
-        const scrollY = window.scrollY;
-
-        // If at top of page -> Hero
-        if (scrollY < 120) {
-          highlightSection('hero');
-          return;
+      // Update Desktop links
+      document.querySelectorAll('.desktop-nav-link[data-nav-section]').forEach(link => {
+        const sec = link.getAttribute('data-nav-section');
+        if (sec === activeId) {
+          link.classList.add('text-primary', 'font-bold');
+          link.classList.remove('text-gray-200');
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.classList.remove('text-primary', 'font-bold');
+          link.classList.add('text-gray-200');
+          link.removeAttribute('aria-current');
         }
-
-        // If near bottom of page -> Kontakt
-        if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 70) {
-          highlightSection('kontakt');
-          return;
-        }
-
-        // Detect section in viewport using getBoundingClientRect
-        let activeId = 'hero';
-        for (let i = targetSections.length - 1; i >= 0; i--) {
-          const el = targetSections[i];
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 240 && rect.bottom > 100) {
-            activeId = el.id;
-            break;
-          }
-        }
-        highlightSection(activeId);
-      }
-
-      // Quick-highlight on click
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          const sec = link.getAttribute('data-nav-section');
-          if (sec) highlightSection(sec);
-        });
       });
 
-      let ticking = false;
-      function onScroll() {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            handleScroll();
-            ticking = false;
-          });
-          ticking = true;
+      // Update Mobile links
+      document.querySelectorAll('.mobile-nav-link[data-nav-section]').forEach(link => {
+        const sec = link.getAttribute('data-nav-section');
+        if (sec === activeId) {
+          link.classList.add('text-primary', 'font-bold', 'bg-surface-dark');
+          link.classList.remove('text-gray-100');
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.classList.remove('text-primary', 'font-bold', 'bg-surface-dark');
+          link.classList.add('text-gray-100');
+          link.removeAttribute('aria-current');
         }
-      }
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      document.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1024) handleScroll();
       });
-
-      // Initial check on load
-      handleScroll();
-      setTimeout(handleScroll, 150);
     }
 
-    initDesktopScrollspy();
+    function lockActiveSection(secId) {
+      lockedSectionId = secId;
+      applyHighlight(secId);
+      if (unlockTimeout) clearTimeout(unlockTimeout);
+      unlockTimeout = setTimeout(() => {
+        lockedSectionId = null;
+      }, 900);
+    }
+
+    // Immediately release lock on manual user scroll/touch interaction
+    window.addEventListener('wheel', () => { lockedSectionId = null; }, { passive: true });
+    window.addEventListener('touchstart', () => { lockedSectionId = null; }, { passive: true });
+
+    function handleScroll() {
+      if (lockedSectionId) return;
+
+      const scrollY = window.scrollY;
+
+      // 1. If at the top of page -> Hero
+      if (scrollY < 100) {
+        applyHighlight('hero');
+        return;
+      }
+
+      // 2. If near bottom of document -> Kontakt
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 60) {
+        applyHighlight('kontakt');
+        return;
+      }
+
+      // 3. Monotonic section boundary check (trigger point = 160px from viewport top)
+      const triggerY = 160;
+      let activeId = 'hero';
+
+      for (let i = 0; i < sections.length; i++) {
+        const rect = sections[i].getBoundingClientRect();
+        if (rect.top <= triggerY) {
+          activeId = sections[i].id;
+        } else {
+          break;
+        }
+      }
+
+      applyHighlight(activeId);
+    }
+
+    // Click handler for all in-page nav links (Desktop & Mobile)
+    document.querySelectorAll('[data-nav-section]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const sec = link.getAttribute('data-nav-section');
+        if (!sec) return;
+
+        const target = document.getElementById(sec);
+        if (target) {
+          e.preventDefault();
+          lockActiveSection(sec);
+          toggleMenu(false);
+
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          if (history.pushState) {
+            history.pushState(null, '', `#${sec}`);
+          }
+        }
+      });
+    });
+
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => {
+      lockedSectionId = null;
+      handleScroll();
+    }, { passive: true });
+
+    // Initial check on load
+    if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '');
+      if (sectionIds.includes(hash)) {
+        lockActiveSection(hash);
+      } else {
+        handleScroll();
+      }
+    } else {
+      handleScroll();
+    }
   })();
 </script>
