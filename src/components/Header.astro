@@ -28,12 +28,12 @@ const isNews = currentPath.startsWith('/news');
         </picture>
       </a>
 
-      <!-- Desktop Navigation Links (Pure text color highlight, no button/border style) -->
+      <!-- Desktop Navigation Links (Pure text color highlight in orange) -->
       <nav id="desktop-nav" class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-medium" aria-label="Hauptnavigation">
         <a 
           href={isHome ? "#hero" : "/"} 
           data-nav-section="hero"
-          class={`desktop-nav-link px-2.5 xl:px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
+          class={`desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isHome ? 'is-active text-primary font-bold' : ''}`}
           aria-current={isHome ? 'page' : undefined}
         >
           Home
@@ -63,7 +63,7 @@ const isNews = currentPath.startsWith('/news');
         <a 
           href={isHome ? "#news" : "/news"} 
           data-nav-section="news"
-          class={`desktop-nav-link px-2.5 xl:px-3 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'text-primary font-bold' : 'text-gray-200 hover:text-primary'}`}
+          class={`desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isNews ? 'is-active text-primary font-bold' : ''}`}
           aria-current={isNews ? 'page' : undefined}
         >
           News
@@ -157,7 +157,7 @@ const isNews = currentPath.startsWith('/news');
     <a 
       href={isHome ? "#hero" : "/"} 
       data-nav-section="hero"
-      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors ${isHome ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} 
+      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors text-gray-100 hover:text-primary hover:bg-surface-dark ${isHome ? 'is-active text-primary font-bold bg-surface-dark' : ''}`} 
       aria-current={isHome ? 'page' : undefined}
     >
       Home
@@ -190,7 +190,7 @@ const isNews = currentPath.startsWith('/news');
     <a 
       href={isHome ? "#news" : "/news"} 
       data-nav-section="news"
-      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors ${isNews ? 'text-primary font-bold bg-surface-dark' : 'text-gray-100 hover:text-primary hover:bg-surface-dark'}`} 
+      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors text-gray-100 hover:text-primary hover:bg-surface-dark ${isNews ? 'is-active text-primary font-bold bg-surface-dark' : ''}`} 
       aria-current={isNews ? 'page' : undefined}
     >
       News
@@ -245,8 +245,21 @@ const isNews = currentPath.startsWith('/news');
   </nav>
 </header>
 
+<style is:global>
+  /* Unmistakable, dedicated high-specificity styling for active navigation links */
+  .desktop-nav-link.is-active {
+    color: #E94F1B !important;
+    font-weight: 700 !important;
+  }
+  .mobile-nav-link.is-active {
+    color: #E94F1B !important;
+    font-weight: 700 !important;
+    background-color: #111111 !important;
+  }
+</style>
+
 <script is:inline>
-  (function initNavigation() {
+  function initNavigation() {
     // 1. Mobile Menu Toggle
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -285,7 +298,6 @@ const isNews = currentPath.startsWith('/news');
         }
       });
 
-      // Close menu on outside click
       document.addEventListener('click', (event) => {
         if (
           menuBtn.getAttribute('aria-expanded') === 'true' &&
@@ -297,33 +309,31 @@ const isNews = currentPath.startsWith('/news');
       });
     }
 
-    // 2. Navigation Highlighting & Scrollspy (Universal for Desktop & Mobile)
+    // 2. Navigation Highlighting & Scrollspy (Runs after DOM is ready)
     const sectionIds = ['hero', 'groupride', 'babos', 'vorteile', 'news', 'faq', 'kontakt'];
     const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter(el => el !== null);
 
-    // Only run scrollspy if homepage sections exist
-    if (sections.length < 2) return;
+    // If on a page without homepage sections, exit scrollspy
+    if (sections.length === 0) return;
 
     let currentActiveId = null;
     let lockedSectionId = null;
     let unlockTimeout = null;
 
     function applyHighlight(activeId) {
-      if (!activeId || currentActiveId === activeId) return;
+      if (!activeId) return;
       currentActiveId = activeId;
 
       // Update Desktop links
       document.querySelectorAll('.desktop-nav-link[data-nav-section]').forEach(link => {
         const sec = link.getAttribute('data-nav-section');
         if (sec === activeId) {
-          link.classList.add('text-primary', 'font-bold');
-          link.classList.remove('text-gray-200');
+          link.classList.add('is-active');
           link.setAttribute('aria-current', 'true');
         } else {
-          link.classList.remove('text-primary', 'font-bold');
-          link.classList.add('text-gray-200');
+          link.classList.remove('is-active');
           link.removeAttribute('aria-current');
         }
       });
@@ -332,12 +342,10 @@ const isNews = currentPath.startsWith('/news');
       document.querySelectorAll('.mobile-nav-link[data-nav-section]').forEach(link => {
         const sec = link.getAttribute('data-nav-section');
         if (sec === activeId) {
-          link.classList.add('text-primary', 'font-bold', 'bg-surface-dark');
-          link.classList.remove('text-gray-100');
+          link.classList.add('is-active');
           link.setAttribute('aria-current', 'true');
         } else {
-          link.classList.remove('text-primary', 'font-bold', 'bg-surface-dark');
-          link.classList.add('text-gray-100');
+          link.classList.remove('is-active');
           link.removeAttribute('aria-current');
         }
       });
@@ -352,7 +360,7 @@ const isNews = currentPath.startsWith('/news');
       }, 900);
     }
 
-    // Immediately release lock on manual user scroll/touch interaction
+    // Immediately release lock on manual user scroll/touch
     window.addEventListener('wheel', () => { lockedSectionId = null; }, { passive: true });
     window.addEventListener('touchstart', () => { lockedSectionId = null; }, { passive: true });
 
@@ -361,7 +369,7 @@ const isNews = currentPath.startsWith('/news');
 
       const scrollY = window.scrollY;
 
-      // 1. If at the top of page -> Hero
+      // 1. If at top of page -> Hero
       if (scrollY < 100) {
         applyHighlight('hero');
         return;
@@ -373,7 +381,7 @@ const isNews = currentPath.startsWith('/news');
         return;
       }
 
-      // 3. Monotonic section boundary check (trigger point = 160px from viewport top)
+      // 3. Monotonic section check with trigger point 160px from viewport top
       const triggerY = 160;
       let activeId = 'hero';
 
@@ -389,7 +397,7 @@ const isNews = currentPath.startsWith('/news');
       applyHighlight(activeId);
     }
 
-    // Click handler for all in-page nav links (Desktop & Mobile)
+    // Attach click handlers to all in-page nav links
     document.querySelectorAll('[data-nav-section]').forEach(link => {
       link.addEventListener('click', (e) => {
         const sec = link.getAttribute('data-nav-section');
@@ -427,7 +435,7 @@ const isNews = currentPath.startsWith('/news');
       handleScroll();
     }, { passive: true });
 
-    // Initial check on load
+    // Initial check
     if (window.location.hash) {
       const hash = window.location.hash.replace('#', '');
       if (sectionIds.includes(hash)) {
@@ -438,5 +446,12 @@ const isNews = currentPath.startsWith('/news');
     } else {
       handleScroll();
     }
-  })();
+  }
+
+  // Guarantee execution only after DOM is fully parsed!
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavigation);
+  } else {
+    initNavigation();
+  }
 </script>
