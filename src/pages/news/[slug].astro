@@ -30,6 +30,34 @@ const formattedDate = new Intl.DateTimeFormat('de-DE', {
 >
   <Header />
   <main id="main-content" class="flex-grow">
+    <!-- Schema.org BlogPosting Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": entry.data.title,
+      "description": entry.data.description,
+      "image": new URL(entry.data.image || '/images/og-image.jpg', Astro.url).toString(),
+      "datePublished": entry.data.date.toISOString(),
+      "dateModified": entry.data.date.toISOString(),
+      "author": {
+        "@type": "Person",
+        "name": entry.data.author
+      },
+      "publisher": {
+        "@type": "SportsClub",
+        "name": "RC Dynamo Ruhr e.V.",
+        "url": "https://dynamoruhr.de",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dynamoruhr.de/images/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": Astro.url.toString()
+      }
+    })} />
+
     <article class="py-16 sm:py-24 bg-surface-dark min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       

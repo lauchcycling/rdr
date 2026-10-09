@@ -144,4 +144,21 @@ const faqs: FAQItem[] = [
     </div>
 
   </div>
+
+  <!-- Schema.org FAQPage Structured Data (Google Rich Results) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": [...faq.paragraphs, ...(faq.bullets || []).map(b => `• ${b}`), faq.closingParagraph || '']
+          .filter(Boolean)
+          .join('\n\n')
+          .replace(/<[^>]*>/g, '')
+      }
+    }))
+  })} />
 </section>

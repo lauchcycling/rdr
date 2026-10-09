@@ -8,12 +8,12 @@ const isNews = currentPath.startsWith('/news');
 
 <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-surface-dark/95 border-b border-surface-border transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20 sm:h-22">
+    <div class="flex items-center justify-between min-h-[5.25rem] sm:min-h-[5.75rem] lg:min-h-[6rem] py-3 sm:py-3.5">
       
-      <!-- Brand Logo (Enlarged for clear legibility of 'RC Dynamo Ruhr') -->
+      <!-- Brand Logo (With comfortable vertical padding and balanced spacing) -->
       <a 
         href="/" 
-        class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg py-1 shrink-0" 
+        class="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg py-1.5 shrink-0" 
         aria-label="RC Dynamo Ruhr e.V. – Zurück zur Startseite"
       >
         <picture>
@@ -21,7 +21,7 @@ const isNews = currentPath.startsWith('/news');
           <img 
             src="/images/logo.png" 
             alt="RC Dynamo Ruhr e.V. – Radsportverein für Rennrad & Gravel im Ruhrgebiet" 
-            class="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            class="h-11 sm:h-12 md:h-13 lg:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             width="357" 
             height="160"
           />

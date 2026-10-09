@@ -50,26 +50,63 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://dynamoru
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, canonicalURL)} />
 
-    <!-- Lokales SEO: Strukturierte Daten (SportsClub / Non-Profit) -->
+    <!-- Lokales SEO & Knowledge Graph: Strukturierte Daten (Schema.org SportsClub & WebSite) -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "SportsClub",
-      "name": "RC Dynamo Ruhr e.V.",
-      "alternateName": ["Dynamo Ruhr", "Radsportclub Dynamo Ruhr"],
-      "url": "https://dynamoruhr.de",
-      "logo": "https://dynamoruhr.de/images/logo.png",
-      "image": "https://dynamoruhr.de/images/og-image.jpg",
-      "description": "Radsportverein für Rennrad, Gravel und Grouprides im Ruhrgebiet (Essen, Gelsenkirchen, Recklinghausen, Bochum).",
-      "sport": ["Radsport", "Rennrad", "Gravel"],
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Nordrhein-Westfalen",
-        "addressLocality": "Recklinghausen / Essen",
-        "addressCountry": "DE"
-      },
-      "sameAs": [
-        "https://instagram.com/dynamoruhr",
-        "https://strava.com/clubs/dynamoruhr"
+      "@graph": [
+        {
+          "@type": ["SportsClub", "SportsOrganization"],
+          "@id": "https://dynamoruhr.de/#organization",
+          "name": "RC Dynamo Ruhr e.V.",
+          "legalName": "RC Dynamo Ruhr e.V.",
+          "alternateName": ["Dynamo Ruhr", "Radsportclub Dynamo Ruhr"],
+          "url": "https://dynamoruhr.de",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://dynamoruhr.de/#logo",
+            "url": "https://dynamoruhr.de/images/logo.png",
+            "caption": "RC Dynamo Ruhr e.V. Logo"
+          },
+          "image": "https://dynamoruhr.de/images/og-image.jpg",
+          "description": "Radsportverein für Rennrad, Gravel und Grouprides im Ruhrgebiet (Essen, Gelsenkirchen, Recklinghausen und Umgebung).",
+          "sport": ["Radsport", "Rennrad", "Gravel", "Cyclocross"],
+          "email": "club@dynamoruhr.de",
+          "foundingDate": "2021-08-15",
+          "identifier": "VR 6170 (Amtsgericht Essen)",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Essen",
+            "addressRegion": "Nordrhein-Westfalen",
+            "addressCountry": "DE"
+          },
+          "memberOf": [
+            {
+              "@type": "SportsOrganization",
+              "name": "Bund Deutscher Radfahrer e.V. (BDR)",
+              "url": "https://www.rad-net.de"
+            },
+            {
+              "@type": "SportsOrganization",
+              "name": "Radsportverband NRW e.V.",
+              "url": "https://www.radsportverband-nrw.de"
+            }
+          ],
+          "sameAs": [
+            "https://instagram.com/dynamoruhr",
+            "https://strava.com/clubs/dynamoruhr"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://dynamoruhr.de/#website",
+          "url": "https://dynamoruhr.de",
+          "name": "RC Dynamo Ruhr e.V.",
+          "description": "Radsportverein für Rennrad & Gravel im Ruhrgebiet",
+          "publisher": {
+            "@id": "https://dynamoruhr.de/#organization"
+          },
+          "inLanguage": "de-DE"
+        }
       ]
     })} />
 
