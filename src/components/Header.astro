@@ -4,6 +4,7 @@ import club from '../data/club.json';
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === '/' || currentPath === '';
 const isNews = currentPath.startsWith('/news');
+const isDownloads = currentPath.startsWith('/downloads');
 ---
 
 <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-surface-dark/95 border-b border-surface-border transition-all">
@@ -67,6 +68,14 @@ const isNews = currentPath.startsWith('/news');
           aria-current={isNews ? 'page' : undefined}
         >
           News
+        </a>
+        <a 
+          href="/downloads" 
+          data-nav-section="downloads"
+          class={`desktop-nav-link px-2.5 xl:px-3 py-2 text-gray-200 hover:text-primary transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md ${isDownloads ? 'is-active' : ''}`}
+          aria-current={isDownloads ? 'page' : undefined}
+        >
+          Downloads
         </a>
         <a 
           href={isHome ? "#faq" : "/#faq"} 
@@ -194,6 +203,14 @@ const isNews = currentPath.startsWith('/news');
       aria-current={isNews ? 'page' : undefined}
     >
       News
+    </a>
+    <a 
+      href="/downloads" 
+      data-nav-section="downloads"
+      class={`mobile-nav-link block px-3.5 py-3 rounded-lg text-base font-medium transition-colors text-gray-100 hover:text-primary hover:bg-surface-dark ${isDownloads ? 'is-active' : ''}`} 
+      aria-current={isDownloads ? 'page' : undefined}
+    >
+      Downloads & Satzung
     </a>
     <a 
       href={isHome ? "#faq" : "/#faq"} 

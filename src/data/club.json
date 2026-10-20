@@ -5,5 +5,12 @@
   "contactEmail": "club@dynamoruhr.de",
   "instagramUrl": "https://instagram.com/dynamoruhr",
   "stravaClubUrl": "https://strava.com/clubs/dynamoruhr",
-  "membershipPdfPath": "/downloads/mitgliedsantrag.pdf"
+  "membershipPdfPath": "/downloads/mitgliedsantrag.pdf",
+  "statutePdfPath": "/downloads/satzung.pdf",
+  "downloadsUrl": "/downloads",
+  "address": {
+    "street": "Annastr. 38A",
+    "zip": "45130",
+    "city": "Essen"
+  }
 }

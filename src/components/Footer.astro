@@ -47,14 +47,10 @@ const currentYear = new Date().getFullYear();
           <li><a href="/#kontakt" class="hover:text-primary transition-colors focus-visible:ring-1 focus-visible:ring-primary rounded">Kontakt</a></li>
           <li>
             <a 
-              href={club.membershipPdfPath} 
-              target="_blank"
-              rel="noopener noreferrer"
-              download 
+              href="/downloads" 
               class="text-primary hover:underline font-semibold flex items-center gap-1 focus-visible:ring-1 focus-visible:ring-primary rounded"
             >
-              <span>Mitgliedsantrag (PDF)</span>
-              <span class="sr-only">(öffnet neues Tab und startet Download)</span>
+              <span>Downloads & Satzung</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
             </a>
           </li>

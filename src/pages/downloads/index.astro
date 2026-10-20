@@ -1,0 +1,262 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import club from '../../data/club.json';
+
+const downloadItems = [
+  {
+    id: "mitgliedsantrag",
+    title: "Offizieller Mitgliedsantrag",
+    subtitle: "RC Dynamo Ruhr e.V.",
+    description: "Der direkte Tritt in unser Peloton: Fülle den Mitgliedsantrag digital oder ausgedruckt per Hand aus und sende ihn bequem per Mail an uns zurück.",
+    filePath: club.membershipPdfPath,
+    fileName: "mitgliedsantrag.pdf",
+    fileSize: "ca. 81 KB",
+    fileType: "PDF-Dokument",
+    badge: "Beitrittsformular",
+    highlights: [
+      "Faire, transparente Club-Konditionen",
+      "Inklusive BDR-Sportunfall- und Haftpflichtschutz",
+      "Zugang zur internen Community & WhatsApp-Gruppe",
+      "Berechtigung für exklusive Bioracer Team-Kits",
+      "100 % Leidenschaft, 0 % Vereinsmeierei"
+    ],
+    buttonText: "Mitgliedsantrag herunterladen (PDF)",
+    icon: "document"
+  },
+  {
+    id: "satzung",
+    title: "Offizielle Vereinssatzung",
+    subtitle: "Fassung vom 21.05.2021 • VR 6170 (Amtsgericht Essen)",
+    description: "Die rechtliche und satzungsmäßige Grundlage unseres Vereinslebens: Von Zweck und Gemeinnützigkeit (§ 2) über Rechte und Pflichten (§ 5) bis hin zu Vorstand und Organen (§ 7–11).",
+    filePath: club.statutePdfPath,
+    fileName: "satzung.pdf",
+    fileSize: "ca. 789 KB (4 Seiten)",
+    fileType: "PDF-Dokument",
+    badge: "Rechtsgrundlage",
+    highlights: [
+      "§ 1 Name, Sitz in Essen und Geschäftsjahr",
+      "§ 2 Gemeinnütziger Zweck: Förderung des Radsports",
+      "§ 3–6 Erwerb, Beendigung, Rechte & faire Beiträge",
+      "§ 7–11 Organe des Vereins, Vorstand & Vertretung",
+      "§ 12–14 Mitgliederversammlung & Beschlussfassung"
+    ],
+    buttonText: "Vereinssatzung herunterladen (PDF)",
+    icon: "shield"
+  }
+];
+---
+
+<Layout 
+  title="Downloads & Vereinsdokumente | RC Dynamo Ruhr e.V."
+  description="Offizielle Dokumente des RC Dynamo Ruhr e.V. zum Herunterladen: Mitgliedsantrag und Vereinssatzung (AG Essen, VR 6170) als PDF. Werde Teil unseres Pelotons!"
+>
+  <Header />
+
+  <main id="main-content" class="flex-grow">
+    <div class="py-16 sm:py-24 bg-surface-dark">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Breadcrumb / Back Link -->
+        <nav aria-label="Breadcrumb" class="mb-10">
+          <a 
+            href="/" 
+            class="inline-flex items-center gap-2 text-xs font-semibold text-gray-400 hover:text-primary transition-colors uppercase tracking-wider focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            <span>Zurück zur Startseite</span>
+          </a>
+        </nav>
+
+        <!-- Page Header -->
+        <header class="max-w-3xl mb-14 lg:mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+            <span>Dokumente & Formulare</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight font-display mb-4">
+            Downloads & <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#FF7A45] to-[#FFA07A]">Dokumente</span>
+          </h1>
+          <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            Hier findest du alle offiziellen Unterlagen des RC Dynamo Ruhr e.V. auf einen Klick. Lade dir deinen Mitgliedsantrag oder die aktuelle Vereinssatzung als sauberes PDF herunter.
+          </p>
+        </header>
+
+        <!-- 2 Large Download Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {downloadItems.map((item) => (
+            <section 
+              id={item.id}
+              class="group bg-surface-card border border-surface-border rounded-3xl p-6 sm:p-10 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 hover:shadow-glow relative overflow-hidden"
+              aria-labelledby={`${item.id}-title`}
+            >
+              <!-- Ambient background corner glow -->
+              <div class="absolute -top-20 -right-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/20 transition-all" aria-hidden="true"></div>
+
+              <div class="relative z-10">
+                <!-- Card Header -->
+                <div class="flex items-start justify-between gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-primary/15 border border-primary/30 text-primary flex items-center justify-center shrink-0 shadow-sm" aria-hidden="true">
+                    {item.icon === 'document' ? (
+                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                      </svg>
+                    ) : (
+                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                      </svg>
+                    )}
+                  </div>
+
+                  <span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-dark border border-surface-border text-gray-300 text-xs font-semibold uppercase tracking-wider">
+                    {item.badge}
+                  </span>
+                </div>
+
+                <div class="mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-primary font-display block mb-1">
+                    {item.subtitle}
+                  </span>
+                  <h2 id={`${item.id}-title`} class="text-2xl sm:text-3xl font-extrabold text-white font-display">
+                    {item.title}
+                  </h2>
+                </div>
+
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                  {item.description}
+                </p>
+
+                <!-- Highlights List -->
+                <div class="bg-surface-dark/70 border border-surface-border/70 rounded-2xl p-5 mb-8">
+                  <span class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-3 font-display">
+                    Enthaltene Inhalte & Vorteile:
+                  </span>
+                  <ul class="space-y-2 text-xs sm:text-sm text-gray-200">
+                    {item.highlights.map((point) => (
+                      <li class="flex items-start gap-2.5">
+                        <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-primary/20 text-primary shrink-0 mt-0.5 text-[10px] font-bold" aria-hidden="true">
+                          ✓
+                        </span>
+                        <span class="leading-normal">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- File Meta & Action Button -->
+              <div class="relative z-10 pt-4 border-t border-surface-border/70">
+                <div class="flex items-center justify-between text-xs text-gray-400 mb-4 font-mono">
+                  <span>{item.fileType} • {item.fileSize}</span>
+                  <span class="text-primary font-semibold font-sans">{item.fileName}</span>
+                </div>
+
+                <a 
+                  href={item.filePath} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  download 
+                  class="w-full min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold text-sm tracking-wide shadow-glow hover:shadow-glow-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-98"
+                  aria-label={`${item.buttonText} (öffnet in neuem Tab und startet Download)`}
+                >
+                  <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                  <span>{item.buttonText}</span>
+                </a>
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <!-- 3-Step Walkthrough Guide -->
+        <div class="bg-surface-card border border-surface-border rounded-3xl p-8 sm:p-12 mb-16">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-primary mb-2">Unkompliziert beitreten</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-display">In 3 Schritten zum Mitglied</h2>
+            <p class="text-gray-400 text-sm mt-2">Wir halten den Papierkram so schlank wie möglich – damit mehr Zeit fürs Rennradfahren bleibt.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Step 1 -->
+            <div class="bg-surface-dark border border-surface-border/80 rounded-2xl p-6">
+              <div class="w-9 h-9 rounded-xl bg-primary/20 text-primary font-black font-display flex items-center justify-center text-sm mb-4">
+                01
+              </div>
+              <h3 class="text-base font-bold text-white mb-2 font-display">Antrag herunterladen</h3>
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Klicke oben auf <strong class="text-white">Mitgliedsantrag herunterladen</strong> und speichere die PDF-Datei auf deinem Smartphone oder Computer.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-surface-dark border border-surface-border/80 rounded-2xl p-6">
+              <div class="w-9 h-9 rounded-xl bg-primary/20 text-primary font-black font-display flex items-center justify-center text-sm mb-4">
+                02
+              </div>
+              <h3 class="text-base font-bold text-white mb-2 font-display">Ausfüllen & unterschreiben</h3>
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Fülle deine Kontaktdaten digital (z. B. via Acrobat / Apple Vorschau) oder klassisch per Stift aus und setze deine Unterschrift darunter.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-surface-dark border border-surface-border/80 rounded-2xl p-6">
+              <div class="w-9 h-9 rounded-xl bg-primary/20 text-primary font-black font-display flex items-center justify-center text-sm mb-4">
+                03
+              </div>
+              <h3 class="text-base font-bold text-white mb-2 font-display">Per E-Mail abschicken</h3>
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Sende den ausgefüllten Antrag einfach per Mail an <a href={`mailto:${club.contactEmail}`} class="text-primary hover:underline font-semibold">{club.contactEmail}</a>. Wir melden uns umgehend bei dir!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help / Questions Box -->
+        <div class="text-center p-8 rounded-2xl bg-surface-card/60 border border-surface-border flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="text-left">
+            <h3 class="text-lg font-bold text-white mb-1 font-display">Hast du Fragen zu Antrag oder Satzung?</h3>
+            <p class="text-xs sm:text-sm text-gray-400">
+              Gerne helfen wir dir weiter. Schreib uns jederzeit eine Mail an <a href={`mailto:${club.contactEmail}`} class="text-primary hover:underline">{club.contactEmail}</a> oder nutze unser Kontaktformular.
+            </p>
+          </div>
+          <a 
+            href="/#kontakt" 
+            class="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface-dark hover:bg-dark-border border border-surface-border text-white text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shrink-0"
+          >
+            <span>Kontakt aufnehmen</span>
+            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Schema.org BreadcrumbList Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "https://dynamoruhr.de"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Downloads & Satzung",
+        "item": "https://dynamoruhr.de/downloads"
+      }
+    ]
+  })} />
+
+  <Footer />
+</Layout>
